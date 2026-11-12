@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendoza Multimedios | Portal de Noticias y Red de Emisoras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --infobae-red: #d32f2f; --sitec-blue: #0055a5; --sitec-gold: #ffb703; --lombritec-green: #15803d; --bg-site: #ffffff; --text-main: #0f172a; --text-sub: #475569; --border-line: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-site); color: var(--text-main); line-height: 1.5; }
+        .sitec-top-header { background: #0f172a; color: #ffffff; font-size: 0.8rem; padding: 6px 0; border-bottom: 2px solid var(--sitec-gold); }
+        .sitec-top-container { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; justify-content: space-between; align-items: center; }
+        .sitec-top-link { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        header { border-bottom: 1px solid var(--border-line); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .top-utility-bar { max-width: 1240px; margin: 0 auto; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-sub); border-bottom: 1px solid #f1f5f9; }
+        .header-main-brand { display: flex; align-items: center; justify-content: center; padding: 10px 0; }
+        .header-main-brand .logo-img { max-width: 450px; width: 100%; height: auto; display: block; }
+        @media (max-width: 600px) { .header-main-brand .logo-img { max-width: 250px; } }
+        .nav-categories { background-color: #1e293b; color: #ffffff; }
+        .nav-container { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; gap: 18px; overflow-x: auto; font-size: 0.82rem; text-transform: uppercase; white-space: nowrap; font-weight: 500; }
+        .nav-container a { color: #cbd5e1; text-decoration: none; padding: 12px 0; display: inline-block; letter-spacing: 0.5px; }
+        .nav-container a:hover, .nav-container a.active { color: #fff; border-bottom: 3px solid var(--infobae-red); font-weight: 700; }
+        .market-radio-ticker { background: #f8fafc; border-bottom: 1px solid var(--border-line); padding: 8px 0; }
+        .ticker-flex { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; gap: 15px; overflow-x: auto; }
+        .dolar-pill { background: #fff; border: 1px solid var(--border-line); padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; }
+        .dolar-pill span { color: var(--infobae-red); }
+        .radios-strip { display: flex; gap: 12px; align-items: center; }
+        .radio-box { background: #fff; border: 1px solid var(--border-line); padding: 4px 10px; border-radius: 4px; display: flex; align-items: center; gap: 8px; font-size: 0.78rem; white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .radio-logo-img { max-height: 28px; width: auto; object-fit: contain; display: block; }
+        .radio-info { display: flex; flex-direction: column; }
+        .radio-name { color: #0f172a; font-size: 0.75rem; font-weight: 500; text-transform: none; display: flex; align-items: center; gap: 4px; }
+        .spectrum-bars { display: flex; align-items: flex-end; gap: 2px; height: 12px; width: 16px; }
+        .spectrum-bars span { display: block; width: 3px; background-color: var(--infobae-red); animation: bounce 1.2s infinite ease-in-out alternate; }
+        .spectrum-bars span:nth-child(1) { animation-delay: 0.1s; height: 6px; }
+        .spectrum-bars span:nth-child(2) { animation-delay: 0.4s; height: 12px; }
+        .spectrum-bars span:nth-child(3) { animation-delay: 0.2s; height: 8px; }
+        @keyframes bounce { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
+        .radio-box audio { height: 24px; width: 110px; accent-color: var(--infobae-red); }
+        .page-wrapper { max-width: 1240px; margin: 0 auto; padding: 0 15px; }
+        .sitec-horizontal-banner { position: relative; height: 160px; background: #050b14; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.18); border: 1px solid #cbd5e1; margin: 25px 0 10px 0; }
+        .sitec-horizontal-banner .bg-slides { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .sitec-horizontal-banner .b-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease-in-out; }
+        .sitec-horizontal-banner .b-slide.active { opacity: 1; }
+        .sitec-horizontal-banner .overlay-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(5,11,20,0.92) 0%, rgba(5,11,20,0.75) 45%, rgba(5,11,20,0.3) 100%); z-index: 2; }
+        .sitec-horizontal-banner .banner-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 0 25px; color: #fff; }
+        .sitec-badge-pill { background: var(--sitec-gold); color: #000; font-weight: 900; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; display: inline-block; margin-bottom: 4px; }
+        .banner-left-info h2 { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.1; }
+        .banner-left-info p.sub { font-size: 0.95rem; font-weight: bold; color: #38bdf8; margin-top: 2px; }
+        .banner-left-info p.desc { font-size: 0.78rem; color: #cbd5e1; margin-top: 2px; }
+        .banner-right-action { display: flex; align-items: center; gap: 15px; background: rgba(15, 23, 42, 0.85); padding: 10px 18px; border-radius: 6px; border-left: 4px solid var(--sitec-gold); backdrop-filter: blur(4px); }
+        .banner-right-action .contact-text { text-align: right; font-size: 0.8rem; }
+        .banner-right-action .contact-text div.phone { font-weight: bold; color: #ffffff; font-size: 0.95rem; }
+        .btn-whatsapp-banner { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+        .infobae-container { display: grid; grid-template-columns: 1fr 340px; gap: 30px; margin-top: 15px; margin-bottom: 30px; }
+        @media (max-width: 960px) { .infobae-container { grid-template-columns: 1fr; } .sitec-horizontal-banner .banner-content { flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; } .sitec-horizontal-banner { height: 200px; } .banner-right-action { width: 100%; justify-content: space-between; } }
+        .section-header-tag { border-bottom: 3px solid #000; padding-bottom: 4px; margin-bottom: 15px; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-red { border-color: var(--infobae-red); color: var(--infobae-red); }
+        .tag-blue { border-color: var(--sitec-blue); color: var(--sitec-blue); }
+        .tag-green { border-color: var(--lombritec-green); color: var(--lombritec-green); }
+        .main-headline-block { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-line); }
+        .main-headline-title { font-size: 2.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 10px; color: #0f172a; }
+        .main-headline-excerpt { font-size: 1.05rem; color: var(--text-sub); margin-bottom: 15px; }
+        .main-headline-img { width: 100%; max-height: 460px; object-fit: cover; display: block; margin-bottom: 10px; border-radius: 4px; }
+        .source-meta { font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase; font-weight: bold; margin-bottom: 6px; }
+        .read-full-btn { font-size: 0.85rem; font-weight: bold; color: var(--infobae-red); text-decoration: none; display: inline-block; margin-top: 5px; }
+        .secondary-news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        @media (max-width: 600px) { .secondary-news-grid { grid-template-columns: 1fr; } }
+        .sub-headline-title { font-size: 1.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+        .sub-headline-excerpt { font-size: 0.88rem; color: var(--text-sub); margin-bottom: 10px; }
+        .sidebar-right { display: flex; flex-direction: column; gap: 20px; }
+        .sitec-banner-card { background: linear-gradient(135deg, #0b1120 0%, #003366 100%); border: 1px solid var(--sitec-gold); border-radius: 4px; padding: 20px; color: #ffffff; }
+        .sitec-badge { background: var(--sitec-gold); color: #000; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 8px; }
+        .sitec-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 4px; }
+        .sitec-desc { font-size: 0.8rem; color: #cbd5e1; margin-bottom: 10px; }
+        .sitec-url { font-size: 0.8rem; font-weight: bold; color: #38bdf8; text-decoration: none; }
+        .ad-box-clean { border: 1px solid var(--border-line); padding: 15px; background: #fff; }
+        .ad-tag { font-size: 0.65rem; color: #64748b; text-transform: uppercase; margin-bottom: 4px; }
+        footer { border-top: 1px solid var(--border-line); padding: 25px 0; text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 40px; background: #f8fafc; }
+    </style>
+</head>
+<body>
+<!-- BARRA SUPERIOR CON EL DÓLAR AL COMIENZO -->
+   
+            </div>
+           </div>
+        </div>
+    <div class="sitec-top-header">
+        <div class="sitec-top-container">
+            <div><strong>Communications Global Media</strong> • Service Manager</div>
+            <a href="communicationsglobalmedia@gmail.com" target="_blank" class="sitec-top-link"></a>
+        </div>
+    </div>
+    <header>
+        <div class="top-utility-bar">
+            <div>Sábado, 7 de Noviembre de 2026</div>
+            <div>⛅ Mendoza: 24°C Despejado</div>
+        </div>
+        <div class="header-main-brand">
+            <a href="index-nuevocuyo.html" class="brand-logo"><img src="logo.png" alt="Mendoza Multimedios" class="logo-img"></a>
+        </div>
+        <div class="nav-categories">
+            <div class="nav-container">
+                <a href="index.html" class="active">CONTACTO</a>
+                <a href="latinoamerica.html">AMÉRICA LATINA</a>
+                <a href="eeuu.html">EEUU</a>
+                <a href="europa.html">EUROPA</a>
+                <a href="mediooriente.html">MEDIO ORIENTE</a>
+                <a href="asia.html">ASIA ORIENTAL Y CENTRAL</a>
+                <a href="#">RADIOS</a>
+                <a href="#">PODCAST</a>
+                <a href="#">STREAMING</a>
+                <a href="#">YOUTUBE CHANNEL</a>
+            </div>
+        </div>
+        
+</div>
+                <div class="radios-strip">
+                    <div class="radio-box">
+                        
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">Rock Station FM</span><audio controls preload="none"><source src="https://stream.zeno.fm/n18u8647qy8uv" type="audio/mpeg"></audio></div>
+                    </div>
+                    <div class="radio-box">
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">R.P.L. Radio Popular Latina</span><audio controls preload="none"><source src="https://stream.zeno.fm/0yz5fs6u498uv" type="audio/mpeg"></audio></div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="sitec-horizontal-banner">
+            <div class="bg-slides" id="horizontalSlides">
+                <img src="inversores_trifasicos.jpg" class="b-slide active" alt="Inversores Trifásicos">
+                <img src="inversor_growatt.jpg" class="b-slide" alt="Inversor Growatt">
+                <img src="inversor_deye.jpg" class="b-slide" alt="Inversor Deye">
+                <img src="tablero_taller.jpg" class="b-slide" alt="Tablero Integrado">
+                <img src="bombeo_solar.jpg" class="b-slide" alt="Bombeo Solar Directo">
+                <img src="power_battery_tesla.jpg" class="b-slide" alt="Power Battery Tesla">
+            </div>
+            <div class="overlay-gradient"></div>
+            <div class="banner-content">
+                <div class="banner-left-info">
+                    <span class="sitec-badge-pill"> </span>
+                    <h2>SITEC</h2>
+                    <p class="sub">Soluciones de Integración Tecnológica</p>
+                    <p class="desc">Inversores Híbridos • Bancos de Baterías • Bombeo Solar Directo • Tableros de Protección</p>
+                    <a href="https://sitecmendoza.com.ar" target="_blank" class="sitec-url">sitecmendoza.com.ar &rarr;</a>
+                </div>     
+                <div class="banner-right-action">
+                    <div class="contact-text">
+                        <div style="color: #cbd5e1; font-size: 0.72rem; text-transform: uppercase;">Atención Técnica</div>
+                        <div class="phone">+54 9 261 254-0460</div>
+                    </div>
+                    <a href="https://wa.me/5492612540460" target="_blank" class="btn-whatsapp-banner">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="infobae-container">
+            <main>
+                <div class="section-header-tag tag-red">Mendoza & Región Cuyo</div>
+                <article class="main-headline-block">
+                    <div class="source-meta" id="sec1-fuente">Cargando fuente...</div>
+                    <h1 class="main-headline-title" id="sec1-titulo">Cargando titular principal...</h1>
+                    <p class="main-headline-excerpt" id="sec1-bajada">Obteniendo noticias en vivo...</p>
+                    <img id="sec1-img" class="main-headline-img" src="" alt="Noticia Principal" style="display:none;">
+                    <a href="#" id="sec1-link" target="_blank" class="read-full-btn" style="display:none;">Ampliar nota completa &rarr;</a>
+                </article>
+                <div class="secondary-news-grid">
+                    <div>
+                        <div class="section-header-tag tag-blue">Ámbito Nacional (Argentina)</div>
+                        <div class="source-meta" id="sec2-fuente">Cargando fuente...</div>
+                        <h2 class="sub-headline-title" id="sec2-titulo">Cargando información...</h2>
+                        <p class="sub-headline-excerpt" id="sec2-bajada">Sincronizando actualidad...</p>
+                        <a href="#" id="sec2-link" target="_blank" class="read-full-btn" style="display:none;">Ampliar &rarr;</a>
+                    </div>
+                    <div>
+                        <div class="section-header-tag tag-green">Panorama Internacional</div>
+                        <div class="source-meta" id="sec3-fuente">Cargando fuente...</div>
+                        <h2 class="sub-headline-title" id="sec3-titulo">Cargando panorama...</h2>
+                        <p class="sub-headline-excerpt" id="sec3-bajada">Sincronizando cables...</p>
+                        <a href="#" id="sec3-link" target="_blank" class="read-full-btn" style="display:none;">Ampliar &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Banner alargado extra abajo de las noticias -->
+                <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-left: 4px solid var(--sitec-gold); border-radius: 6px; padding: 20px; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <div>
+                        <span style="background: var(--sitec-gold); color: #000; font-size: 0.65rem; font-weight: 900; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; display: inline-block; margin-bottom: 6px;"></span>
+                        <h3 style="font-size: 1.2rem; font-weight: 900; margin-bottom: 4px;">RED DE COMUNICACIÓN FEDERAL & MULTIMEDIOS</h3>
+                        <p style="font-size: 0.82rem; color: #cbd5e1;">Articulación directa de emisoras, soportes técnicos y provisión de contenidos regionales.</p>
+                    </div>
+                    <div>
+                        <a href="https://www.radioytelevision.ar/quienes-somos/" target="_blank" style="background: var(--sitec-gold); color: #000; padding: 10px 16px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; white-space: nowrap; display: inline-block;">Conocer más &rarr;</a>
+                    </div>
+                </div>
+            </main>
+           <aside class="sidebar-right">
+
+<!-- PUBLICIDAD LATERAL -->
+<aside class="sidebar-right space-y-6">
+
+   <!-- 1. Primer Banner (Duplicado / Cambiar imagen y enlaces según quieras) -->
+    <div style="background: #fff; border: 1px solid var(--border-line); border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <a href="https://mendozamultimedios.com.ar/sitio_web_oficial_f_u_va" target="_blank">
+            <img src="Logo_fuva.png" alt="Publicidad 2" style="width: 100%; height: auto; display: block;">
+        </a>
+        <div style="padding: 10px; text-align: center; background: #fafafa; border-top: 1px solid var(--border-line);">
+            <a href="https://mendozamultimedios.com.ar/sitio_web_oficial_f_u_va" target="_blank" class="sitec-url" style="font-size: 0.8rem;">Visitar Sitio &rarr;</a>
+        </div>
+    </div>
+
+    <!-- 2. Segundo Banner (El Ángel del Tornillo) -->
+    <div style="background: #fff; border: 1px solid var(--border-line); border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <a href="https://maps.app.goo.gl/FFZTSfyJsdkWvdL99" target="_blank">
+            <img src="elangeldetornillo.jfif" alt="El Ángel del Tornillo" style="width: 100%; height: auto; display: block;">
+        </a>
+        <div style="padding: 10px; text-align: center; background: #fafafa; border-top: 1px solid var(--border-line);">
+            <a href="https://www.instagram.com/elangeldeltornillo/" target="_blank" class="sitec-url" style="font-size: 0.8rem;">Visitanos en Instagram &rarr;</a>
+        </div>
+    </div>
+
+ 
+
+    <!-- 3. Tercer Banner (Duplicado opcional) -->
+    <div style="background: #fff; border: 1px solid var(--border-line); border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <a href="https://sitecmendoza.com.ar/" target="_blank">
+            <img src="sitec_banner.jfif" alt="Publicidad 3" style="width: 100%; height: auto; display: block;">
+        </a>
+        <div style="padding: 10px; text-align: center; background: #fafafa; border-top: 1px solid var(--border-line);">
+            <a href="https://sitecmendoza.com.ar/" target="_blank" class="sitec-url" style="font-size: 0.8rem;">Visitar Sitio &rarr;</a>
+        </div>
+    </div>
+
+</aside>
+           
+
+                </div>
+                    <h4 style="font-size: 1.05rem; font-weight: 900; margin: 4px 0; color: #0f172a;">ENVÍOS A TODO EL PAÍS</h4>
+                    <p style="font-size: 0.78rem; color: var(--text-sub); margin-bottom: 8px;">Comprá con tranquilidad, cuotas sin interés y garantía directa en insumos y equipos.</p>
+                    <a href="https://mercadolibre.com.ar" target="_blank" class="sitec-url" style="color: #ca8a04;">Ver publicaciones activas &rarr;</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 <strong>Mendoza Multimedios</strong> • Portal Autónomo de Noticias y Red de Emisoras de Argentina y el mundo.</p></strong>contacto@mendozamultimedios.com.ar</p>
+        <p style="margin-top: 4px;">Soportado por Communications Global Media. Service Manager</p>
+    </footer>
+
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('#horizontalSlides .b-slide');
+            let current = 0;
+            setInterval(() => { slides[current].classList.remove('active'); current = (current + 1) % slides.length; slides[current].classList.add('active'); }, 8000);
+        })();
+
+        const listaSec1 = [
+            { nombre: "Jornada Medios", rss: "https://jornadaonline.com/feed" },
+            { nombre: "Mendovoz", rss: "https://www.mendovoz.com/feed" },
+            { nombre: "Noticias de Mendoza", rss: "https://noticiasmendoza.com.ar/feed" }
+        ];
+        const listaSec2 = [
+            { nombre: "Infobae Argentina", rss: "https://www.infobae.com/feeds/rss/" },
+            { nombre: "La Nación", rss: "https://www.lanacion.com.ar/arc/outboundfeeds/rss/?outputType=xml" }
+        ];
+        const listaSec3 = [
+            { nombre: "BBC Mundo", rss: "https://feeds.bbci.co.uk/mundo/rss.xml" },
+            { nombre: "DW Español", rss: "https://rss.dw.com/xml/rss-sp-all" }
+        ];
+
+        async function cargarSeccion(lista, prefix) {
+            let opciones = [...lista];
+            while (opciones.length > 0) {
+                const idx = Math.floor(Math.random() * opciones.length);
+                const medio = opciones.splice(idx, 1)[0];
+                const timestamp = new Date().getTime() + "_" + Math.random().toString(36).substring(2, 7);
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(medio.rss)}&_t=${timestamp}`;
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 6000);
+                    const res = await fetch(apiUrl, { cache: "no-store", signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    const data = await res.json();
+                    if (data.status === 'ok' && data.items && data.items.length > 0) {
+                        const item = data.items[0];
+                        document.getElementById(`${prefix}-fuente`).innerText = `Fuente: ${medio.nombre}`;
+                        document.getElementById(`${prefix}-titulo`).innerText = item.title;
+                        const tempDiv = document.createElement("div");
+                        tempDiv.innerHTML = item.description || item.content || "";
+                        document.getElementById(`${prefix}-bajada`).innerText = (tempDiv.textContent || tempDiv.innerText || "").substring(0, 260) + "...";
+                        const imgElem = document.getElementById(`${prefix}-img`);
+                        if (imgElem) {
+                            let imgUrl = item.thumbnail || (item.enclosure && item.enclosure.link);
+                            if (!imgUrl) { const tagImg = tempDiv.querySelector("img"); if (tagImg) imgUrl = tagImg.src; }
+                            if (imgUrl) { imgElem.src = imgUrl; imgElem.style.display = "block"; }
+                        }
+                        const linkBtn = document.getElementById(`${prefix}-link`);
+                        linkBtn.href = item.link; linkBtn.style.display = "inline-block";
+                        return;
+                    }
+                } catch (e) { console.warn("Reintentando fuente por error de conexión..."); }
+            }
+        }
+
+        function actualizarTodasLasNoticias() {
+            cargarSeccion(listaSec1, "sec1");
+            setTimeout(() => { cargarSeccion(listaSec2, "sec2"); }, 300);
+            setTimeout(() => { cargarSeccion(listaSec3, "sec3"); }, 600);
+        }
+
+        function forzarActualizacion() {
+            ["sec1", "sec2", "sec3"].forEach(prefix => {
+                const f = document.getElementById(`${prefix}-fuente`);
+                const t = document.getElementById(`${prefix}-titulo`);
+                if (f) f.innerText = "Cargando fuente...";
+                if (t) t.innerText = "Cargando titular...";
+            });
+            actualizarTodasLasNoticias();
+        }
+
+        window.addEventListener("pageshow", function (event) {
+            forzarActualizacion();
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            actualizarTodasLasNoticias();
+            setInterval(actualizarTodasLasNoticias, 900000);
+        });
+    </script>
+</body>
+</html>
