@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/PAGINA%20mendozamutimedios/asia.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendoza Multimedios | Asia Oriental y Central</title>
+    <link href="./asia_files/css2" rel="stylesheet">
+    <style>
+        :root { --infobae-red: #d32f2f; --sitec-blue: #0055a5; --sitec-gold: #ffb703; --lombritec-green: #15803d; --bg-site: #ffffff; --text-main: #0f172a; --text-sub: #475569; --border-line: #e2e8f0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-site); color: var(--text-main); line-height: 1.5; }
+        .sitec-top-header { background: #0f172a; color: #ffffff; font-size: 0.8rem; padding: 6px 0; border-bottom: 2px solid var(--sitec-gold); }
+        .sitec-top-container { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; justify-content: space-between; align-items: center; }
+        .sitec-top-link { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        header { border-bottom: 1px solid var(--border-line); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .top-utility-bar { max-width: 1240px; margin: 0 auto; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-sub); border-bottom: 1px solid #f1f5f9; }
+        .header-main-brand { display: flex; align-items: center; justify-content: center; padding: 10px 0; }
+        .header-main-brand .logo-img { max-width: 450px; width: 100%; height: auto; display: block; }
+        @media (max-width: 600px) { .header-main-brand .logo-img { max-width: 250px; } }
+        .nav-categories { background-color: #1e293b; color: #ffffff; }
+        .nav-container { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; gap: 18px; overflow-x: auto; font-size: 0.82rem; text-transform: uppercase; white-space: nowrap; font-weight: 500; }
+        .nav-container a { color: #cbd5e1; text-decoration: none; padding: 12px 0; display: inline-block; letter-spacing: 0.5px; }
+        .nav-container a:hover, .nav-container a.active { color: #fff; border-bottom: 3px solid var(--infobae-red); font-weight: 700; }
+        .market-radio-ticker { background: #f8fafc; border-bottom: 1px solid var(--border-line); padding: 8px 0; }
+        .ticker-flex { max-width: 1240px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; gap: 15px; overflow-x: auto; }
+        .dolar-pill { background: #fff; border: 1px solid var(--border-line); padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; }
+        .dolar-pill span { color: var(--infobae-red); }
+        .radios-strip { display: flex; gap: 12px; align-items: center; }
+        .radio-box { background: #fff; border: 1px solid var(--border-line); padding: 4px 10px; border-radius: 4px; display: flex; align-items: center; gap: 8px; font-size: 0.78rem; white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .radio-logo-img { max-height: 28px; width: auto; object-fit: contain; display: block; }
+        .radio-info { display: flex; flex-direction: column; }
+        .radio-name { color: #0f172a; font-size: 0.75rem; font-weight: 500; text-transform: none; display: flex; align-items: center; gap: 4px; }
+        .spectrum-bars { display: flex; align-items: flex-end; gap: 2px; height: 12px; width: 16px; }
+        .spectrum-bars span { display: block; width: 3px; background-color: var(--infobae-red); animation: bounce 1.2s infinite ease-in-out alternate; }
+        .spectrum-bars span:nth-child(1) { animation-delay: 0.1s; height: 6px; }
+        .spectrum-bars span:nth-child(2) { animation-delay: 0.4s; height: 12px; }
+        .spectrum-bars span:nth-child(3) { animation-delay: 0.2s; height: 8px; }
+        @keyframes bounce { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
+        .radio-box audio { height: 24px; width: 110px; accent-color: var(--infobae-red); }
+        .page-wrapper { max-width: 1240px; margin: 0 auto; padding: 0 15px; }
+        .sitec-horizontal-banner { position: relative; height: 160px; background: #050b14; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.18); border: 1px solid #cbd5e1; margin: 25px 0 10px 0; }
+        .sitec-horizontal-banner .bg-slides { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .sitec-horizontal-banner .b-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease-in-out; }
+        .sitec-horizontal-banner .b-slide.active { opacity: 1; }
+        .sitec-horizontal-banner .overlay-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(5,11,20,0.92) 0%, rgba(5,11,20,0.75) 45%, rgba(5,11,20,0.3) 100%); z-index: 2; }
+        .sitec-horizontal-banner .banner-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 0 25px; color: #fff; }
+        .sitec-badge-pill { background: var(--sitec-gold); color: #000; font-weight: 900; font-size: 0.7rem; padding: 2px 8px; border-radius: 3px; text-transform: uppercase; display: inline-block; margin-bottom: 4px; }
+        .banner-left-info h2 { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.1; }
+        .banner-left-info p.sub { font-size: 0.95rem; font-weight: bold; color: #38bdf8; margin-top: 2px; }
+        .banner-left-info p.desc { font-size: 0.78rem; color: #cbd5e1; margin-top: 2px; }
+        .banner-right-action { display: flex; align-items: center; gap: 15px; background: rgba(15, 23, 42, 0.85); padding: 10px 18px; border-radius: 6px; border-left: 4px solid var(--sitec-gold); backdrop-filter: blur(4px); }
+        .banner-right-action .contact-text { text-align: right; font-size: 0.8rem; }
+        .banner-right-action .contact-text div.phone { font-weight: bold; color: #ffffff; font-size: 0.95rem; }
+        .btn-whatsapp-banner { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+        .infobae-container { display: grid; grid-template-columns: 1fr 340px; gap: 30px; margin-top: 15px; margin-bottom: 30px; }
+        @media (max-width: 960px) { .infobae-container { grid-template-columns: 1fr; } .sitec-horizontal-banner .banner-content { flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; } .sitec-horizontal-banner { height: 200px; } .banner-right-action { width: 100%; justify-content: space-between; } }
+        .section-header-tag { border-bottom: 3px solid #000; padding-bottom: 4px; margin-bottom: 15px; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-red { border-color: var(--infobae-red); color: var(--infobae-red); }
+        .tag-blue { border-color: var(--sitec-blue); color: var(--sitec-blue); }
+        .tag-green { border-color: var(--lombritec-green); color: var(--lombritec-green); }
+        .main-headline-block { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-line); }
+        .main-headline-title { font-size: 2.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 10px; color: #0f172a; }
+        .main-headline-excerpt { font-size: 1.05rem; color: var(--text-sub); margin-bottom: 15px; }
+        .main-headline-img { width: 100%; max-height: 460px; object-fit: cover; display: block; margin-bottom: 10px; border-radius: 4px; }
+        .source-meta { font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase; font-weight: bold; margin-bottom: 6px; }
+        .read-full-btn { font-size: 0.85rem; font-weight: bold; color: var(--infobae-red); text-decoration: none; display: inline-block; margin-top: 5px; }
+        .secondary-news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        @media (max-width: 600px) { .secondary-news-grid { grid-template-columns: 1fr; } }
+        .sub-headline-title { font-size: 1.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+        .sub-headline-excerpt { font-size: 0.88rem; color: var(--text-sub); margin-bottom: 10px; }
+        .sidebar-right { display: flex; flex-direction: column; gap: 20px; }
+        .sitec-banner-card { background: linear-gradient(135deg, #0b1120 0%, #003366 100%); border: 1px solid var(--sitec-gold); border-radius: 4px; padding: 20px; color: #ffffff; }
+        .sitec-badge { background: var(--sitec-gold); color: #000; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 8px; }
+        .sitec-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 4px; }
+        .sitec-desc { font-size: 0.8rem; color: #cbd5e1; margin-bottom: 10px; }
+        .sitec-url { font-size: 0.8rem; font-weight: bold; color: #38bdf8; text-decoration: none; }
+        .ad-box-clean { border: 1px solid var(--border-line); padding: 15px; background: #fff; }
+        .ad-tag { font-size: 0.65rem; color: #64748b; text-transform: uppercase; margin-bottom: 4px; }
+        footer { border-top: 1px solid var(--border-line); padding: 25px 0; text-align: center; font-size: 0.8rem; color: var(--text-sub); margin-top: 40px; background: #f8fafc; }
+    </style>
+</head>
+<body>
+    <div class="sitec-top-header">
+        <div class="sitec-top-container">
+            <div><strong>Communications Global Media</strong> • Service Manager</div>
+            <a href="https://sitecmendoza.com.ar/" target="_blank" class="sitec-top-link"></a>
+        </div>
+    </div>
+    <header>
+        <div class="top-utility-bar">
+            <div>Viernes, 6 de Noviembre de 2026</div>
+            <div>⛅ Mendoza: 24°C Despejado</div>
+        </div>
+        <div class="header-main-brand">
+            <a href="file:///C:/PAGINA%20mendozamutimedios/index.html" class="brand-logo"><img src="./asia_files/logo.png" alt="Mendoza Multimedios" class="logo-img"></a>
+        </div>
+        <div class="nav-categories">
+            <div class="nav-container">
+                <a href="file:///C:/PAGINA%20mendozamutimedios/index.html">ARGENTINA</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/latinoamerica.html">AMÉRICA LATINA</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/eeuu.html">EEUU</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/europa.html">EUROPA</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/mediooriente.html">MEDIO ORIENTE</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html" class="active">ASIA ORIENTAL Y CENTRAL</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#">RADIOS</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#">PODCAST</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#">STREAMING</a>
+                <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#">YOUTUBE CHANNEL</a>
+             </div>
+        </div>
+        <div class="market-radio-ticker">
+            <div class="ticker-flex">
+                <div class="dolar-pill">DÓLAR OFICIAL: <span>$1.570,00</span></div>
+                <div class="radios-strip">
+                    <div class="radio-box">
+                        <img src="./asia_files/descarga.png" alt="Rock Station" class="radio-logo-img">
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">Rock Station FM</span><audio controls="" preload="none"><source src="https://stream.zeno.fm/n18u8647qy8uv" type="audio/mpeg"></audio></div>
+                    </div>
+                    <div class="radio-box">
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">R.P.L. Radio Popular Latina</span><audio controls="" preload="none"><source src="https://stream.zeno.fm/0yz5fs6u498uv" type="audio/mpeg"></audio></div>
+                    </div>
+                    <div class="radio-box">
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">Rapdio La radio del barrio</span><audio controls="" preload="none"><source src="https://stream.zeno.fm/31hp99zym18uv" type="audio/mpeg"></audio></div>
+                    </div>
+                    <div class="radio-box">
+                        <div class="spectrum-bars"><span></span><span></span><span></span></div>
+                        <div class="radio-info"><span class="radio-name">Carrizal FM Tu Radio...en el aire</span><audio controls="" preload="none"><source src="https://stream.zeno.fm/0yz5fs6u498uv" type="audio/mpeg"></audio></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="sitec-horizontal-banner">
+            <div class="bg-slides" id="horizontalSlides">
+                <img src="./asia_files/inversores_trifasicos.jpg" class="b-slide" alt="Inversores Trifásicos">
+                <img src="./asia_files/inversor_growatt.jpg" class="b-slide" alt="Inversor Growatt">
+                <img src="./asia_files/inversor_deye.jpg" class="b-slide" alt="Inversor Deye">
+                <img src="./asia_files/tablero_taller.jpg" class="b-slide active" alt="Tablero Integrado">
+                <img src="./asia_files/bombeo_solar.jpg" class="b-slide" alt="Bombeo Solar Directo">
+                <img src="file:///C:/PAGINA%20mendozamutimedios/power_battery_tesla.jpg" class="b-slide" alt="Power Battery Tesla">
+            </div>
+            <div class="overlay-gradient"></div>
+            <div class="banner-content">
+                <div class="banner-left-info">
+                    <span class="sitec-badge-pill"> </span>
+                    <h2>SITEC</h2>
+                    <p class="sub">Soluciones de Integración Tecnológica</p>
+                    <p class="desc">Inversores Híbridos • Bancos de Baterías • Bombeo Solar Directo • Tableros de Protección</p>
+                    <a href="https://sitecmendoza.com.ar/" target="_blank" class="sitec-url">sitecmendoza.com.ar →</a>
+                </div>     
+                <div class="banner-right-action">
+                    <div class="contact-text">
+                        <div style="color: #cbd5e1; font-size: 0.72rem; text-transform: uppercase;">Atención Técnica</div>
+                        <div class="phone">+54 9 261 254-0460</div>
+                    </div>
+                    <a href="https://wa.me/5492612540460" target="_blank" class="btn-whatsapp-banner">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="infobae-container">
+            <main>
+                <div class="section-header-tag tag-red">Asia Oriental</div>
+                <article class="main-headline-block">
+                    <div class="source-meta" id="sec1-fuente">Cargando fuente...</div>
+                    <h1 class="main-headline-title" id="sec1-titulo">Servicio de noticias en actualización</h1>
+                    <p class="main-headline-excerpt" id="sec1-bajada">Sincronizando cables internacionales con la región...</p>
+                    <img id="sec1-img" class="main-headline-img" src="file:///C:/PAGINA%20mendozamutimedios/asia.html" alt="Noticia Principal" style="display:none;">
+                    <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#" id="sec1-link" target="_blank" class="read-full-btn" style="display:none;">Ampliar nota completa →</a>
+                </article>
+                <div class="secondary-news-grid">
+                    <div>
+                        <div class="section-header-tag tag-blue">Oceanía &amp; japón</div>
+                        <div class="source-meta" id="sec2-fuente">Fuente: Al Jazeera English</div>
+                        <h2 class="sub-headline-title" id="sec2-titulo">Thune re-elected as US Senate Republican leader after midterm losses</h2>
+                        <p class="sub-headline-excerpt" id="sec2-bajada">The Republican ran unopposed, despite some GOP lawmaker demands to evaluate the party's stinging midterm losses to Democ</p>
+                        <a href="https://www.aljazeera.com/news/2026/11/11/thune-re-elected-as-us-senate-republican-leader-after-midterm-losses?traffic_source=rss" id="sec2-link" target="_blank" class="read-full-btn" style="display: inline-block;">Ampliar →</a>
+                    </div>
+                    <div>
+                        <div class="section-header-tag tag-green" rusia="" china="" <="" div="">
+                        <div class="source-meta" id="sec3-fuente">Cargando fuente...</div>
+                        <h2 class="sub-headline-title" id="sec3-titulo">Servicio de noticias en actualización</h2>
+                        <p class="sub-headline-excerpt" id="sec3-bajada">Sincronizando cables internacionales con la región...</p>
+                        <a href="file:///C:/PAGINA%20mendozamutimedios/asia.html#" id="sec3-link" target="_blank" class="read-full-btn" style="display:none;">Ampliar →</a>
+                    </div>
+                </div>
+
+                <!-- Banner alargado extra abajo de las noticias -->
+                <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-left: 4px solid var(--sitec-gold); border-radius: 6px; padding: 20px; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <div>
+                        <span style="background: var(--sitec-gold); color: #000; font-size: 0.65rem; font-weight: 900; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; display: inline-block; margin-bottom: 6px;"></span>
+                        <h3 style="font-size: 1.2rem; font-weight: 900; margin-bottom: 4px;">RED DE COMUNICACIÓN FEDERAL &amp; MULTIMEDIOS</h3>
+                        <p style="font-size: 0.82rem; color: #cbd5e1;">Articulación directa de emisoras, soportes técnicos y provisión de contenidos regionales.</p>
+                    </div>
+                    <div>
+                        <a href="https://www.radioytelevision.ar/quienes-somos/" target="_blank" style="background: var(--sitec-gold); color: #000; padding: 10px 16px; border-radius: 4px; font-weight: bold; font-size: 0.82rem; text-decoration: none; white-space: nowrap; display: inline-block;">Conocer más →</a>
+                    </div>
+                </div>
+            </div></main>
+            <aside class="sidebar-right">
+                <!-- 1. El Ángel del Tornillo -->
+                <div style="background: #fff; border: 1px solid var(--border-line); border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <a href="https://maps.app.goo.gl/FFZTSfyJsdkWvdL99" target="_blank">
+                        <img src="./asia_files/elangeldetornillo.jfif" alt="El Ángel del Tornillo" style="width: 100%; height: auto; display: block;">
+                    </a>
+                    <div style="padding: 10px; text-align: center; background: #fafafa; border-top: 1px solid var(--border-line);">
+                        <a href="https://www.instagram.com/elangeldeltornillo/" target="_blank" class="sitec-url" style="font-size: 0.8rem;">Visitanos en Instagram →</a>
+                    </div>
+                </div>
+
+                <!-- BANNER LOMBRITEC ARGENTINA (Facebook URL fixed: removed double https://) -->
+                <div class="lombritec-banner-box">
+                    <div class="lombritec-badge-tag">100% De Lombriz Roja</div>
+                    <div class="lombritec-content-flex">
+                        <div class="lombritec-circle-img">
+                            <img src="./asia_files/Nucleoslom.jpg" alt="Núcleos de Lombriz Roja">
+                        </div>
+                        <div class="lombritec-text-side">
+                            <h3 class="lombritec-brand-title">LOMBRITEC <span>ARGENTINA</span></h3>
+                            <p class="lombritec-sub">Abono Orgánico Premium &amp; Lixiviado</p>
+                            <p class="lombritec-desc">Regenera Tu Suelo de Forma Natural</p>
+                        </div>
+                    </div>
+                    <div class="lombritec-products-row">
+                        <img src="./asia_files/bolsahumus.png" alt="Humus 100% Lombriz Roja" class="prod-img">
+                        <img src="./asia_files/Sin títuloawdf.png" alt="Lixiviado de Lombriz" class="prod-img">
+                    </div>
+                    <a href="https://lombritec.com.ar/" target="_blank" class="btn-lombritec-action">
+                        VISITAR lombritec.com.ar →
+                    </a>
+                    <div style="padding: 8px 10px 4px 10px; text-align: center; background: #fafafa; border-top: 1px solid var(--border-line); margin-top: 10px; border-radius: 0 0 4px 4px;">
+                        <a href="https://www.facebook.com/LombritecArgentina/" target="_blank" class="sitec-url" style="font-size: 0.8rem; color: #1877f2; font-weight: bold;">Visitanos en Facebook →</a>
+                    </div>
+                </div>
+
+                <style>
+                .lombritec-banner-box {
+                    background: linear-gradient(135deg, #f5f5dc 0%, #e8e6d9 100%);
+                    border: 2px solid #15803d;
+                    border-radius: 8px;
+                    padding: 16px;
+                    font-family: 'Roboto', sans-serif;
+                    color: #1a381e;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                    position: relative;
+                    overflow: hidden;
+                }
+                .lombritec-badge-tag {
+                    position: absolute;
+                    top: 10px;
+                    right: 12px;
+                    font-size: 0.7rem;
+                    font-weight: 800;
+                    color: #15803d;
+                    text-transform: uppercase;
+                }
+                .lombritec-content-flex {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    margin-top: 8px;
+                }
+                .lombritec-circle-img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 3px solid #15803d;
+                    flex-shrink: 0;
+                }
+                .lombritec-circle-img img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .lombritec-text-side { flex: 1; }
+                .lombritec-brand-title {
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                    color: #15803d;
+                    line-height: 1.1;
+                    margin: 0;
+                }
+                .lombritec-brand-title span {
+                    display: block;
+                    color: #0f172a;
+                    font-size: 1rem;
+                }
+                .lombritec-sub {
+                    font-size: 0.78rem;
+                    font-weight: bold;
+                    color: #334155;
+                    margin-top: 4px;
+                    line-height: 1.2;
+                }
+                .lombritec-desc {
+                    font-size: 0.72rem;
+                    color: #475569;
+                    margin-top: 2px;
+                }
+                .lombritec-products-row {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    gap: 15px;
+                    margin: 12px 0 0 0;
+                    padding: 8px 0;
+                    background: rgba(255,255,255,0.65);
+                    border-radius: 6px;
+                }
+                .lombritec-products-row .prod-img {
+                    max-height: 75px;
+                    width: auto;
+                    object-fit: contain;
+                    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+                }
+                .btn-lombritec-action {
+                    display: block;
+                    text-align: center;
+                    background: #15803d;
+                    color: #ffffff !important;
+                    font-weight: 800;
+                    font-size: 0.85rem;
+                    padding: 10px 14px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    transition: background 0.2s ease;
+                    box-shadow: 0 2px 5px rgba(21, 128, 61, 0.3);
+                    margin-top: 10px;
+                }
+                .btn-lombritec-action:hover { background: #166534; }
+                </style>
+
+                <!-- 5. Espacio Destacado Mercado Libre -->
+                <div class="ad-box-clean" style="border-left: 4px solid #facc15; background: #fefce8;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <div class="ad-tag" style="color: #854d0e; font-weight: bold; margin-bottom: 0;">Tienda Oficial Online</div>
+                        <span style="background: #eab308; color: #000; font-size: 0.6rem; font-weight: 900; padding: 1px 5px; border-radius: 3px;">MERCADOLIBRE</span>
+                    </div>
+                    <h4 style="font-size: 1.05rem; font-weight: 900; margin: 4px 0; color: #0f172a;">ENVÍOS A TODO EL PAÍS</h4>
+                    <p style="font-size: 0.78rem; color: var(--text-sub); margin-bottom: 8px;">Comprá con tranquilidad, cuotas sin interés y garantía directa en insumos y equipos.</p>
+                    <a href="https://mercadolibre.com.ar/" target="_blank" class="sitec-url" style="color: #ca8a04;">Ver publicaciones activas →</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 <strong>Mendoza Multimedios</strong> • Portal Autónomo de Noticias y Red de Emisoras de Argentina y el mundo.</p>
+        <p style="margin-top: 4px;">Soportado por Communications Global Media. Service Manager</p>
+    </footer>
+ <script>
+        // Transición de banners
+        (function() {
+            const slides = document.querySelectorAll('#horizontalSlides .b-slide');
+            let current = 0;
+            setInterval(() => { 
+                slides[current].classList.remove('active'); 
+                current = (current + 1) % slides.length; 
+                slides[current].classList.add('active'); 
+            }, 8000);
+        })();
+
+        // FUENTES RSS CORREGIDAS (Multilingües e Internacionales de alta disponibilidad)
+        const listaSec1 = [
+            {"nombre": "BBC News Asia", "rss": "http://feeds.bbci.co.uk/news/world/asia/rss.xml"},
+            {"nombre": "NHK World Japón", "rss": "https://www3.nhk.or.jp/nhkworld/es/news/index.xml"},
+            {"nombre": "The Straits Times Asia", "rss": "https://www.straitstimes.com/news/asia/rss.xml"}
+        ];
+
+        const listaSec2 = [
+            {"nombre": "Al Jazeera English", "rss": "https://www.aljazeera.com/xml/rss/all.xml"},
+            {"nombre": "Kyodo News English", "rss": "https://english.kyodonews.net/rss/news.xml"}
+        ];
+
+        const listaSec3 = [
+            {"nombre": "RT en Español", "rss": "https://actualidad.rt.com/feeds/news.rss"},
+            {"nombre": "DW Noticias", "rss": "https://rss.dw.com/xml/rss-sp-all"}
+        ];
+
+        async function cargarSeccion(lista, prefix) {
+            let opciones = [...lista];
+            while (opciones.length > 0) {
+                const idx = Math.floor(Math.random() * opciones.length);
+                const medio = opciones.splice(idx, 1)[0];
+                const timestamp = new Date().getTime();
+                
+                // Usamos rss2json con timestamp para evitar caché guardada
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(medio.rss)}&_t=${timestamp}`;
+                
+                try {
+                    const res = await fetch(apiUrl);
+                    const data = await res.json();
+                    
+                    if (data.status === 'ok' && data.items && data.items.length > 0) {
+                        // Filtramos notas que contengan referencias asiáticas o tomamos la primera
+                        const item = data.items[0];
+                        
+                        document.getElementById(`${prefix}-fuente`).innerText = `Fuente: ${medio.nombre}`;
+                        document.getElementById(`${prefix}-titulo`).innerText = item.title;
+                        
+                        const tempDiv = document.createElement("div");
+                        tempDiv.innerHTML = item.description || item.content || "";
+                        
+                        let textoLimpio = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                        if (textoLimpio.length > 260) {
+                            textoLimpio = textoLimpio.substring(0, 260) + "...";
+                        }
+                        document.getElementById(`${prefix}-bajada`).innerText = textoLimpio || "Hacé clic en ampliar para leer la cobertura completa.";
+                        
+                        const imgElem = document.getElementById(`${prefix}-img`);
+                        if (imgElem) {
+                            let imgUrl = item.thumbnail || (item.enclosure && item.enclosure.link);
+                            if (!imgUrl) { 
+                                const tagImg = tempDiv.querySelector("img"); 
+                                if (tagImg) imgUrl = tagImg.src; 
+                            }
+                            if (imgUrl) { 
+                                imgElem.src = imgUrl; 
+                                imgElem.style.display = "block"; 
+                            } else {
+                                imgElem.style.display = "none";
+                            }
+                        }
+                        
+                        const linkBtn = document.getElementById(`${prefix}-link`);
+                        if (linkBtn) {
+                            linkBtn.href = item.link; 
+                            linkBtn.style.display = "inline-block";
+                        }
+                        return; // Si cargó bien, salimos del bucle
+                    }
+                } catch (e) { 
+                    console.warn(`Error al cargar ${medio.nombre}, reintentando otra fuente...`); 
+                }
+            }
+            
+            // Si fallan todas las fuentes de esa lista
+            document.getElementById(`${prefix}-titulo`).innerText = "Servicio de noticias en actualización";
+            document.getElementById(`${prefix}-bajada`).innerText = "Sincronizando cables internacionales con la región...";
+        }
+
+        function actualizarTodasLasNoticias() {
+            cargarSeccion(listaSec1, "sec1");
+            setTimeout(() => { cargarSeccion(listaSec2, "sec2"); }, 400);
+            setTimeout(() => { cargarSeccion(listaSec3, "sec3"); }, 800);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            actualizarTodasLasNoticias();
+            setInterval(actualizarTodasLasNoticias, 900000); // 15 minutos
+        });
+    </script>
+
+</body></html>
