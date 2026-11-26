@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mnews | Noticias de Maipú y Mendoza</title>
+  <!-- Tailwind CSS via CDN (liviano y listo para prototipar o desplegar en Netlify) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tipografía geométrica limpia similar al isotipo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+    }
+    .brand-blue {
+      background-color: #003366;
+    }
+    .text-brand-blue {
+      color: #003366;
+    }
+    .border-brand-blue {
+      border-color: #003366;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+  <!-- Barra Superior Institucional / Red Mendoza Multimedios -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-3">
+        <span class="font-semibold text-white"> Mendoza</span>
+        <span>•</span>
+        <span id="fecha-actual">Actualizado al instante</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white transition">Mendoza Multimedios</a>
+        <span class="text-slate-600">|</span>
+        <a href="#" class="hover:text-white transition font-medium text-sky-400">Nuevo Cuyo+</a>
+        <span class="text-slate-600">|</span>
+        <a href="#radio-vivo" class="flex items-center gap-1.5 text-emerald-400 font-semibold hover:text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Radio en Vivo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cabecera Principal Estilo App (Inspirada en mnews) -->
+  <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Logo SVG estilo ícono redondeado mnews -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl brand-blue flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+          <svg viewBox="0 0 120 120" class="w-11 h-11" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="120" rx="26" fill="#003366"/>
+            <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="-1.2">
+              <tspan fill="#cbd5e1">m</tspan><tspan fill="#ffffff">news</tspan>
+            </text>
+          </svg>
+        </div>
+        <div>
+          <span class="block text-xl font-extrabold tracking-tight text-brand-blue leading-none">
+            m<span class="font-semibold text-slate-700">news</span>
+          </span>
+          <span class="block text-[11px] uppercase tracking-wider text-slate-500 font-semibold mt-1">
+             Mendoza 
+          </span>
+        </div>
+      </a>
+
+      <!-- Menú de Categorías Directas -->
+      <nav class="hidden md:flex items-center gap-1 text-sm font-semibold text-slate-600">
+        <a href="#" class="px-3 py-2 rounded-lg bg-[#003366]/10 text-brand-blue">Portada</a>
+        <a href="#" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Maipú</a>
+        <a href="#" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Policiales</a>
+        <a href="#" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Servicios</a>
+        <a href="#" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Bolsillo</a>
+        <a href="#" class="px-3 py-2 rounded-lg hover:bg-slate-100 transition">Deportes</a>
+      </nav>
+
+      <!-- Botón Acción / Enviar Noticia por WhatsApp -->
+      <a href="https://wa.me/" target="_blank" class="brand-blue hover:bg-[#002244] text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition flex items-center gap-2">
+        <span>+ Reporte Vecinal</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Cinta de Último Momento (Alto CTR) -->
+  <div class="max-w-6xl mx-auto px-4 mt-4">
+    <div class="bg-white border-l-4 border-brand-blue rounded-r-xl shadow-sm px-4 py-2.5 flex items-center gap-3 overflow-hidden">
+      <span class="brand-blue text-white text-[11px] font-bold uppercase px-2.5 py-1 rounded-md shrink-0 tracking-wide">
+        Urgente
+      </span>
+      <p class="text-sm font-semibold text-slate-800 truncate">
+        Cortes programados de agua y tránsito en calle Rawson: mirá el mapa de desvíos.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    
+    <!-- Grilla Superior: Noticia Principal + Secundarias -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Columna Principal (7 columnas) -->
+      <article class="lg:col-span-7 bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-200 flex flex-col justify-between group">
+        <div>
+          <div class="relative h-64 sm:h-80 bg-slate-200 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1584467735815-f778f274e296?auto=format&fit=crop&w=1000&q=80" alt="Noticia destacada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <span class="absolute top-3 left-3 brand-blue text-white text-xs font-bold uppercase px-3 py-1 rounded-lg shadow">
+              Servicios • Maipú
+            </span>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight group-hover:text-brand-blue transition">
+              Atención vecinos: confirman cambios en los horarios de atención comercial y transporte en Luján
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+              Los comerciantes de la zona acordaron un nuevo esquema para facilitar las compras de insumos y herramientas. Conocé qué líneas de colectivo modifican su frecuencia.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 sm:px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span>Hace 18 minutos • Redacción mnews</span>
+          <a href="#" class="text-emerald-600 font-bold hover:underline flex items-center gap-1">
+            Compartir en WhatsApp ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- Columna Lateral de Noticias Rápidas (5 columnas) -->
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        
+        <!-- Tarjeta Lateral 1 -->
+        <article class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex gap-4 items-center hover:border-[#003366]/40 transition">
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=300&q=80" alt="Policial" class="w-24 h-24 rounded-xl object-cover shrink-0 bg-slate-200" />
+          <div>
+            <span class="text-[11px] font-bold uppercase text-red-600 tracking-wide">Policiales</span>
+            <h2 class="text-base font-bold text-slate-900 leading-snug mt-0.5 hover:text-brand-blue cursor-pointer">
+              Rápido operativo en Ruta 7 permitió recuperar herramientas robadas de un taller local
+            </h2>
+            <span class="block text-xs text-slate-400 mt-1.5">Hace 45 min</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta Lateral 2 -->
+        <article class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex gap-4 items-center hover:border-[#003366]/40 transition">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&q=80" alt="Economía" class="w-24 h-24 rounded-xl object-cover shrink-0 bg-slate-200" />
+          <div>
+            <span class="text-[11px] font-bold uppercase text-brand-blue tracking-wide">Economía y Bolsillo</span>
+            <h2 class="text-base font-bold text-slate-900 leading-snug mt-0.5 hover:text-brand-blue cursor-pointer">
+              Cuánto cuesta hoy equipar un taller o encarar refacciones en casa: precios de referencia en Mendoza
+            </h2>
+            <span class="block text-xs text-slate-400 mt-1.5">Hace 1 hora</span>
+          </div>
+        </article>
+
+        <!-- Espacio Publicitario Comercial (Ejemplo de pauta local) -->
+        <div class="brand-blue rounded-2xl p-5 text-white shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div class="relative z-10">
+            <span class="text-[10px] uppercase tracking-widest bg-white/20 px-2 py-0.5 rounded font-semibold">
+              Espacio Comercial • Maipú
+            </span>
+            <h3 class="text-lg font-extrabold mt-2">EL ÁNGEL DEL TORNILLO</h3>
+            <p class="text-xs text-slate-200 mt-1">
+              Ferretería Industrial • Máquinas, insumos y herramientas. Maza Norte y Honduras, Gutiérrez.
+            </p>
+            <div class="mt-3 inline-block bg-white text-brand-blue text-xs font-bold px-3 py-1.5 rounded-lg">
+              Lun a Vie 9 a 10 • Sáb medio día
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sección Inferior: Más Noticias Locales en 3 Columnas -->
+    <section class="mt-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+          <span class="w-2.5 h-6 brand-blue rounded-sm inline-block"></span>
+          Más noticias de la zona
+        </h3>
+        <a href="#" class="text-xs font-bold text-brand-blue hover:underline">Ver todas →</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Nota 1 -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-44 bg-slate-200">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Nota" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+              <span class="text-[11px] font-bold uppercase text-brand-blue">Comunidad</span>
+              <h4 class="text-base font-bold text-slate-900 mt-1 leading-snug">
+                Feria de productores y emprendedores este fin de semana en la plaza departamental
+              </h4>
+            </div>
+          </div>
+          <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+            <span>Maipú Centro</span>
+            <a href="#" class="text-emerald-600 font-semibold">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Nota 2 -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-44 bg-slate-200">
+              <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Nota" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+              <span class="text-[11px] font-bold uppercase text-brand-blue">Trámites</span>
+              <h4 class="text-base font-bold text-slate-900 mt-1 leading-snug">
+                Licencia de conducir y turnos municipales: guía rápida para evitar demoras esta semana
+              </h4>
+            </div>
+          </div>
+          <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+            <span>Servicios</span>
+            <a href="#" class="text-emerald-600 font-semibold">WhatsApp</a>
+          </div>
+        </article>
+
+        <!-- Nota 3 -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-44 bg-slate-200">
+              <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80" alt="Nota" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+              <span class="text-[11px] font-bold uppercase text-brand-blue">Deportes</span>
+              <h4 class="text-base font-bold text-slate-900 mt-1 leading-snug">
+                Todo listo para una nueva fecha del fútbol mendocino con cruces clave para los equipos locales
+              </h4>
+            </div>
+          </div>
+          <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+            <span>Liga Mendocina</span>
+            <a href="#" class="text-emerald-600 font-semibold">WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página Integrado a Mendoza Multimedios -->
+  <footer class="bg-slate-900 text-slate-400 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl brand-blue flex items-center justify-center text-white font-bold text-sm">
+          mnews
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm">mnews • Portal Local</p>
+          <p class="text-xs text-slate-400">Un medio de <strong class="text-slate-200">Mendoza </strong></p>
+        </div>
+      </div>
+      <div class="text-xs text-center md:text-right">
+        <p>Maipú, Mendoza, Argentina</p>
+        <p class="mt-1 text-slate-500">Publicidad y  comercial en red </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script liviano para mostrar la fecha actual automáticamente -->
+  <script>
+    const opciones = { weekday: 'long', day: 'numeric', month: 'long' };
+    const hoy = new Date().toLocaleDateString('es-AR', opciones);
+    document.getElementById('fecha-actual').textContent = hoy.charAt(0).toUpperCase() + hoy.slice(1);
+  </script>
+</body>
+</html>

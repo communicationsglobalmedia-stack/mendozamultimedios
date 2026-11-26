@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Cuyo+ Servicio periodístico automatizado de Mendoza Multimedios|mendozamultimedios.com.ar Diario Digital Regional</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #d97706;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        /* Top bar regional */
+        .top-bar {
+            background: var(--dark);
+            color: #ffffff;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .provincia-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .provincia-btn {
+            background: none;
+            border: 1px solid #475569;
+            color: #cbd5e1;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .provincia-btn:hover,
+        .provincia-btn.active-prov {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        /* Direct links a medios asociados */
+        .external-diarios-bar {
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .external-diarios-bar span {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .external-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .external-links a {
+            color: #334155;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            border: 1px solid #cbd5e1;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .external-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Branding header */
+        header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--accent);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+
+        }
+/* BANNER TRANSVERSAL */
+.banner-transversal {
+    max-width: 1100px;
+    margin: 15px auto 0 auto;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.banner-transversal img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px dashed #cbd5e1;
+    display: block;
+    margin: 0 auto;
+}
+
+/* NAVIGATION BAR */
+nav {
+    background: var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    list-style: none;
+    overflow-x: auto;
+}
+
+        .nav-container li a,
+        .nav-container li button {
+            display: inline-block;
+            background: none;
+            border: none;
+            color: #ffffff;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-container li a:hover,
+        .nav-container li button:hover,
+        .nav-container li a.active,
+        .nav-container li button.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        /* Main layout en dos columnas (Contenido + Banner Lateral) */
+        main {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 25px;
+        }
+
+        @media (max-width: 850px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-area {
+            min-width: 0;
+        }
+
+        /* BANNER LATERAL */
+        .sidebar-banner-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .banner-lateral {
+            position: sticky;
+            top: 70px;
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .banner-lateral img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .block-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Sección Portadas de la Región */
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .region-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--border);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .region-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .region-header {
+            background: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .region-img {
+            height: 140px;
+            width: 100%;
+            object-fit: cover;
+            background: #cbd5e1;
+        }
+
+        .region-content {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .region-headline {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .region-card:hover .region-headline {
+            color: var(--accent);
+        }
+
+        /* Sección Mendoza CMS (Grilla principal) */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 160px;
+            background: #cbd5e1;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-category {
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+            transition: color 0.2s;
+        }
+
+        .card:hover .card-title {
+            color: var(--accent);
+        }
+
+        .card-excerpt {
+            font-size: 0.88rem;
+            color: #475569;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>Red Digital de Mendoza Multimedios</span>
+        <ul class="provincia-links">
+            
+        </ul>
+    </div>
+
+    <!-- Barra de enlaces a medios asociados por provincia -->
+    <div class="external-diarios-bar">
+        <span></span>
+        <div class="external-links" id="external-links-container"></div>
+    </div>
+
+    <header>
+        <div class="brand">NUEVO CUYO<span>+</span></div>
+        <div class="tagline">El diario digital regional</div>
+    </header>
+
+<!-- BANNER TRANSVERSAL -->
+<div class="banner-transversal">
+    <a href="vicuna.com" target="_blank">
+        <img src="vicuna.png" alt="Vicuna">
+    </a>
+</div>
+
+    <nav style="margin-top: 15px;">
+        <ul class="nav-container">
+            <li><a href="https://mendozamultimedios.com.ar" class="active">Inicio</a></li>
+            <li><button onclick="filterSection('actualidad')">Actualidad</button></li>
+            <li><button onclick="filterSection('policiales')">Policiales</button></li>
+            <li><button onclick="filterSection('politica')">Política</button></li>
+            <li><button onclick="filterSection('deportes')">Deportes</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- COLUMNA PRINCIPAL DE NOTICIAS -->
+        <div class="content-area">
+
+            <!-- PORTADAS DESTACADAS REGIONALES -->
+            <h2 class="block-title" id="region-block-title" style="margin-top:0;">Portadas de la Región</h2>
+            <div class="region-grid" id="region-cards-container">
+                
+                <a href="https://www.diariodecuyo.com.ar" target="_blank" rel="noopener noreferrer" class="region-card">
+                    <div class="region-header">
+                        <span>San Juan</span>
+                        <span>Edición ↗</span>
+                    </div>
+                    <img src="https://picsum.photos/400/220?random=10" alt="Portada San Juan" class="region-img">
+                    <div class="region-content">
+                        <h3 class="region-headline">Medios informativos de San Juan</h3>
+                        <div style="font-size:0.8rem; color:#64748b; margin-top:5px;">Fuente: Diario de Cuyo</div>
+                    </div>
+                </a>
+
+                <a href="https://www.eldiariodelarepublica.com" target="_blank" rel="noopener noreferrer" class="region-card">
+                    <div class="region-header">
+                        <span>San Luis</span>
+                        <span>Edición ↗</span>
+                    </div>
+                    <img src="https://picsum.photos/400/220?random=11" alt="Portada San Luis" class="region-img">
+                    <div class="region-content">
+                        <h3 class="region-headline">Diarios de San luis</h3>
+                        <div style="font-size:0.8rem; color:#64748b; margin-top:5px;">Fuente: El Diario de la República</div>
+                    </div>
+                </a>
+
+                <a href="https://www.elindependiente.com.ar" target="_blank" rel="noopener noreferrer" class="region-card">
+                    <div class="region-header">
+                        <span>La Rioja</span>
+                        <span>Edición ↗</span>
+                    </div>
+                    <img src="https://picsum.photos/400/220?random=12" alt="Portada La Rioja" class="region-img">
+                    <div class="region-content">
+                        <h3 class="region-headline">Principales noticias de La Rioja</h3>
+                        <div style="font-size:0.8rem; color:#64748b; margin-top:5px;">Fuente: El Independiente</div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- SECCIÓN MENDOZA CON CMS DINÁMICO -->
+            <h2 class="block-title" id="mendoza-block-title">Mendoza | Edición Central </h2>
+            <div class="news-grid" id="mendoza-news-container"></div>
+
+        </div>
+
+     
+
+
+<!-- COLUMNA LATERAL (BANNERS VERTICALES) -->
+        <aside class="sidebar-banner-wrapper">
+            
+            <!-- Primer Banner Lateral (Publicidad 1)  -->
+            <div class="banner-lateral">
+                <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; display: block; margin-bottom: 5px;"></span>
+                <a href="https://sisanjuan.gob.ar/" target="_blank">
+                    <img src="sisanjuan.png" alt="San Juan Gob">
+                </a>
+            </div>
+
+            <!-- Segundo Banner Lateral (Publicidad 2)-->
+            <div class="banner-lateral">
+                <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; display: block; margin-bottom: 5px;"></span>
+                <a href="https://sitecmendoza.com.ar/" target="_blank">
+                    <img src="sitec_banner.jfif" alt="SITEC Soluciones de Integración Tecnológica"">
+                </a>
+            </div>
+
+            <!-- Tercer Banner Lateral (Publicidad 3) -->
+            <div class="banner-lateral">
+                <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; display: block; margin-bottom: 5px;"></span>
+                <a href="" target="_blank">
+                    <img src="laprincesa.png" alt="Panificadora La Princesa">
+                </a>
+           
+            </div>
+
+  
+
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 <strong>NUEVO CUYO+</strong> — Servicio periodístico automatizado de Mendoza Multimedios. Portal Autónomo de Noticias y Red de Emisoras de Argentina y el mundo. contacto@mendozamultimedios.com.ar</p>
+        <p style="margin-top: 4px;">Soportado por Communications Global Media. Service Manager</p>
+    </footer>
+
+    <script>
+    <script>
+  <script>
+        // PEGA ACÁ TU LINK CSV PUBLICADO DESDE GOOGLE SHEETS
+        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyc7zupQCZpetL4X_EDddzWtBT9IC6G7uunVnjhGsUzH7tFzmTwCtepWC-H6FZeCrXx3NXhxZ1KEpV/pub?gid=476541865&single=true&output=csv';
+
+        let selectedSection = 'todas';
+        let selectedProvincia = 'todas';
+        let mendozaNewsData = [];
+        let selectedSection = 'todas';
+        let selectedProvincia = 'todas';
+        let mendozaNewsData = [];
+
+        let fallbackNewsData = [
+            {
+                category: 'actualidad',
+                title: 'Avanzan obras viales en los accesos principales del Gran Mendoza',
+                excerpt: 'Se intensifican los trabajos de reasfaltado nocturno para agilizar el tránsito en horas pico.',
+                time: 'Edición Permanente',
+                author: 'Redacción Central',
+                img: 'https://picsum.photos/400/250?random=1',
+                url: '#'
+            }
+        ];
+
+        const provinciaDiarios = {
+            'Mendoza': [
+                { name: 'Los Andes', url: 'https://www.losandes.com.ar' },
+                { name: 'MDZ Online', url: 'https://www.mdzol.com' }
+            ],
+            'San Juan': [
+                { name: 'Diario de Cuyo', url: 'https://www.diariodecuyo.com.ar' },
+                { name: 'Tiempo de San Juan', url: 'https://www.tiempodesanjuan.com' }
+            ],
+            'San Luis': [
+                { name: 'El Diario de la República', url: 'https://www.eldiariodelarepublica.com' },
+                { name: 'ANSL (Noticias San Luis)', url: 'http://agenciadenoticias.sanluis.gov.ar' }
+            ],
+            'La Rioja': [
+                { name: 'El Independiente', url: 'https://www.elindependiente.com.ar' },
+                { name: 'Nueva Rioja', url: 'https://www.nuevarioja.com.ar' }
+            ]
+        };
+
+        function parseCSVLine(text) {
+            let p = '', c = '', r = [];
+            let q = false;
+            for (let i = 0; i < text.length; i++) {
+                c = text[i];
+                if (c === '"') {
+                    if (q && text[i+1] === '"') { p += '"'; i++; }
+                    else { q = !q; }
+                } else if (c === ',' && !q) {
+                    r.push(p); p = '';
+                } else {
+                    p += c;
+                }
+            }
+            r.push(p);
+            return r;
+        }
+
+        async function fetchCMSNews() {
+            try {
+                if (SHEET_CSV_URL.includes('TU_ENLACE_CSV')) {
+                    renderMendozaNews();
+                    return;
+                }
+                const response = await fetch(SHEET_CSV_URL);
+                const data = await response.text();
+                const lines = data.split(/\r\n|\n/);
+                
+                if (lines.length < 2) {
+                    renderMendozaNews();
+                    return;
+                }
+
+                const headers = parseCSVLine(lines[0]).map(h => h.trim().toLowerCase());
+                
+                const idxMarca = headers.findIndex(h => h.includes('marca') || h.includes('timestamp'));
+                const idxSeccion = headers.findIndex(h => h.includes('sección') || h.includes('seccion'));
+                const idxTitulo = headers.findIndex(h => h.includes('título') || h.includes('titulo'));
+                const idxCuerpo = headers.findIndex(h => h.includes('bajada') || h.includes('cuerpo'));
+                const idxAutor = headers.findIndex(h => h.includes('autor') || h.includes('alias'));
+                const idxEstado = headers.findIndex(h => h.includes('rol') || h.includes('estado'));
+                const idxEnlace = headers.findIndex(h => h.includes('link') || h.includes('enlace') || h.includes('url'));
+
+                let parsedNews = [];
+
+                for (let i = 1; i < lines.length; i++) {
+                    if (!lines[i].trim()) continue;
+                    const row = parseCSVLine(lines[i]);
+
+                    const estado = (row[idxEstado] || '').trim();
+
+                    if (estado.toLowerCase() === 'aprobado') {
+                        parsedNews.push({
+                            category: (row[idxSeccion] || 'actualidad').trim().toLowerCase(),
+                            title: row[idxTitulo] || 'Sin título',
+                            excerpt: row[idxCuerpo] || '',
+                            time: row[idxMarca] ? row[idxMarca].trim() : 'Reciente',
+                            author: row[idxAutor] || 'Redacción',
+                            img: 'https://picsum.photos/400/250?random=' + i,
+                            url: (idxEnlace !== -1 && row[idxEnlace]) ? row[idxEnlace].trim() : '#'
+                        });
+                    }
+                }
+
+                if (parsedNews.length > 0) {
+                    mendozaNewsData = parsedNews.reverse();
+                }
+                
+                renderMendozaNews();
+            } catch (error) {
+                console.error("Error al cargar las notas desde Google Sheets:", error);
+                renderMendozaNews();
+            }
+        }
+
+        function updateExternalLinks() {
+            const container = document.getElementById('external-links-container');
+            container.innerHTML = '';
+
+            let diariosToShow = [];
+
+            if (selectedProvincia === 'todas') {
+                Object.keys(provinciaDiarios).forEach(prov => {
+                    diariosToShow.push({ name: `${prov}: ${provinciaDiarios[prov][0].name}`, url: provinciaDiarios[prov][0].url });
+                });
+            } else {
+                provinciaDiarios[selectedProvincia].forEach(d => {
+                    diariosToShow.push({ name: d.name, url: d.url });
+                });
+            }
+
+            diariosToShow.forEach(d => {
+                container.innerHTML += `<a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.name} ↗</a>`;
+            });
+        }
+
+        function renderMendozaNews() {
+            const container = document.getElementById('mendoza-news-container');
+            const titleBlock = document.getElementById('mendoza-block-title');
+            container.innerHTML = '';
+
+            titleBlock.textContent = selectedSection === 'todas' 
+                ? 'Mendoza | Edición Central' 
+                : `Mendoza | Sección ${selectedSection.toUpperCase()}`;
+
+            let sourceData = mendozaNewsData.length > 0 ? mendozaNewsData : fallbackNewsData;
+
+            const filtered = selectedSection === 'todas' 
+                ? sourceData 
+                : sourceData.filter(item => item.category === selectedSection);
+
+            const finalDisplay = filtered.length > 0 ? filtered : sourceData.slice(0, 1);
+
+            finalDisplay.forEach(item => {
+                const card = `
+                    <a href="${item.url}" class="card">
+                        <div class="card-img-wrapper">
+                            <span class="card-category">${item.category}</span>
+                            <img src="${item.img}" alt="${item.title}">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${item.title}</h3>
+                            <p class="card-excerpt">${item.excerpt}</p>
+                            <div class="card-footer">
+                                <span>Por: ${item.author} (${item.time})</span>
+                                <span>Edición Mendoza</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                container.innerHTML += card;
+            });
+
+            updateExternalLinks();
+        }
+
+        function filterSection(category) {
+            selectedSection = category;
+            document.querySelectorAll('.nav-container button').forEach(btn => btn.classList.remove('active'));
+            if(window.event && window.event.target) window.event.target.classList.add('active');
+            renderMendozaNews();
+        }
+
+        function filterProvincia(prov) {
+            selectedProvincia = prov;
+            document.querySelectorAll('.provincia-btn').forEach(btn

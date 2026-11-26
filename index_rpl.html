@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.P.L. • Radio Popular Latina | R.P.L. • La fiesta de todos los días</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-night: #14071d;
+            --bg-card: rgba(34, 11, 45, 0.64);
+            --bg-soft: rgba(54, 20, 70, 0.56);
+            --rose-hot: #ff2a6d;
+            --orange-fiesta: #ff8c1a;
+            --yellow-gold: #ffe066;
+            --cyan-pop: #4df2ff;
+            --text-light: #fff9fd;
+            --text-dim: #ead2e8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 400;
+            background-color: var(--bg-night);
+            background-image:
+                linear-gradient(180deg, rgba(22, 8, 32, 0.36) 0%, rgba(18, 6, 26, 0.52) 55%, rgba(12, 4, 18, 0.68) 100%),
+                url("fondo-rpl.jpg");
+            background-position: center top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: hidden;
+        }
+        @media (min-width: 841px) {
+            body {
+                background-attachment: fixed;
+            }
+        }
+
+        /* Destellos luminosos tipo diamante sobre el fondo */
+        .diamond-sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(2px 2px at 14% 22%, rgba(255, 255, 255, 0.95), transparent 70%),
+                radial-gradient(3px 3px at 28% 14%, rgba(255, 232, 140, 0.9), transparent 70%),
+                radial-gradient(2px 2px at 78% 18%, rgba(255, 255, 255, 0.95), transparent 70%),
+                radial-gradient(2.5px 2.5px at 88% 36%, rgba(160, 248, 255, 0.9), transparent 70%),
+                radial-gradient(2px 2px at 22% 68%, rgba(255, 255, 255, 0.85), transparent 70%),
+                radial-gradient(3px 3px at 66% 58%, rgba(255, 224, 102, 0.9), transparent 70%),
+                radial-gradient(2px 2px at 84% 78%, rgba(255, 255, 255, 0.9), transparent 70%),
+                radial-gradient(2px 2px at 42% 84%, rgba(255, 190, 230, 0.85), transparent 70%);
+            animation: diamondTwinkle 4.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes diamondTwinkle {
+            0% {
+                opacity: 0.45;
+                filter: brightness(0.95);
+            }
+            50% {
+                opacity: 0.95;
+                filter: brightness(1.35) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+            }
+            100% {
+                opacity: 0.65;
+                filter: brightness(1.1);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .diamond-sparkles,
+            .rpl-marquee-track,
+            .sponsors-marquee-track,
+            .vivo-dot {
+                animation: none !important;
+            }
+        }
+
+        /* Elevar contenido por encima de los destellos */
+        .rpl-marquee,
+        .top-social-bar,
+        .hero-tropical,
+        .sponsors-marquee-wrap,
+        .main-wrap,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Marquesina Superior Luminosa y Suave */
+        .rpl-marquee {
+            background: linear-gradient(90deg, rgba(255, 64, 129, 0.92), rgba(255, 152, 36, 0.94), rgba(255, 224, 102, 0.92));
+            color: #1b0824;
+            padding: 9px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 4px 24px rgba(255, 175, 65, 0.45);
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        .rpl-marquee-track {
+            display: inline-flex;
+            gap: 44px;
+            padding-left: 100%;
+            animation: marqueeRPL 28s linear infinite;
+        }
+        .rpl-marquee:hover .rpl-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes marqueeRPL {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .m-tag {
+            background: rgba(255, 255, 255, 0.78);
+            color: #240933;
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-right: 6px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.65);
+        }
+
+        /* Barra Superior de Redes con Íconos Limpios */
+        .top-social-bar {
+            max-width: 1040px;
+            margin: 14px auto 0 auto;
+            padding: 0 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .icon-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+        .icon-link svg {
+            width: 19px;
+            height: 19px;
+            fill: currentColor;
+        }
+        .icon-link:hover {
+            transform: translateY(-2px) scale(1.05);
+            filter: brightness(1.12);
+            box-shadow: 0 8px 22px rgba(255, 224, 102, 0.32);
+        }
+        .ic-wa { background: rgba(22, 163, 74, 0.88); }
+        .ic-fb { background: rgba(37, 99, 235, 0.88); }
+        .ic-ig { background: linear-gradient(45deg, rgba(245, 158, 11, 0.9), rgba(236, 72, 153, 0.9), rgba(139, 92, 246, 0.9)); }
+        .ic-yt { background: rgba(220, 38, 38, 0.88); }
+        .ic-tk { background: rgba(24, 14, 34, 0.86); }
+
+        /* Cabecera Centrada */
+        .hero-tropical {
+            max-width: 900px;
+            margin: 16px auto 0 auto;
+            padding: 0 16px;
+            text-align: center;
+        }
+        .rpl-logo-top {
+            width: min(250px, 66vw);
+            height: min(250px, 66vw);
+            object-fit: cover;
+            border-radius: 50%;
+            background: rgba(38, 12, 52, 0.65);
+            padding: 4px;
+            box-shadow:
+                0 0 42px rgba(255, 224, 102, 0.48),
+                0 14px 36px rgba(0, 0, 0, 0.55);
+            margin: 0 auto 14px auto;
+            display: block;
+        }
+        .rpl-kicker {
+            display: inline-block;
+            background: rgba(77, 242, 255, 0.16);
+            color: var(--cyan-pop);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 15px;
+            border-radius: 999px;
+            letter-spacing: 0.7px;
+            margin-bottom: 8px;
+        }
+        .hero-tropical h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.55rem, 3.6vw, 2.2rem);
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffe066 0%, #fff4bd 48%, #ffb347 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.22;
+            letter-spacing: -0.2px;
+            filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.75));
+        }
+        .hero-lema {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.6px;
+            color: #ffffff;
+            margin-top: 6px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+        }
+        .brand-desc {
+            font-size: 0.86rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            margin-top: 4px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+        }
+
+        /* Consola Central Afinada */
+        .station-live-card {
+            margin: 16px auto 0 auto;
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 14px 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.48);
+            text-align: left;
+            backdrop-filter: blur(8px);
+        }
+        .live-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 7px;
+            flex-wrap: wrap;
+        }
+        .vivo-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 42, 109, 0.9);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.4px;
+        }
+        .vivo-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--yellow-gold);
+            border-radius: 50%;
+            animation: pulse 1.4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
+        }
+        .signal-meter {
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: var(--cyan-pop);
+        }
+        .song-line {
+            font-size: 0.84rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .song-main {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex: 1;
+        }
+        .song-id-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--yellow-gold);
+            background: rgba(255, 224, 102, 0.14);
+            padding: 2px 8px;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+        .station-live-card audio {
+            width: 100%;
+            height: 32px;
+            accent-color: var(--yellow-gold);
+            display: block;
+        }
+        .player-status-hint {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        /* Fila de Reacciones Afinada */
+        .reactions-strip {
+            margin-top: 10px;
+            padding-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(72px, 1fr));
+            gap: 8px;
+        }
+        @media (max-width: 520px) {
+            .reactions-strip {
+                grid-template-columns: repeat(2, minmax(90px, 1fr));
+            }
+        }
+        .emoji-vote-btn {
+            background: var(--bg-soft);
+            border-radius: 12px;
+            padding: 6px 6px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .emoji-vote-btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 140, 26, 0.28);
+        }
+        .emoji-vote-btn.voted {
+            background: rgba(77, 242, 255, 0.22);
+        }
+        .emoji-icon {
+            font-size: 1.2rem;
+            line-height: 1.1;
+        }
+        .emoji-label {
+            font-size: 0.69rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .emoji-count {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--yellow-gold);
+        }
+
+        /* Marquesina Móvil de Anunciantes (Contenedores Ampliados) */
+        .sponsors-marquee-wrap {
+            max-width: 1120px;
+            margin: 20px auto 0 auto;
+            padding: 0 16px;
+        }
+        .sponsors-marquee-box {
+            background: var(--bg-card);
+            border-radius: 18px;
+            padding: 14px 0 16px 0;
+            overflow: hidden;
+            backdrop-filter: blur(7px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38);
+        }
+        .sponsors-marquee-label {
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: var(--yellow-gold);
+            padding: 0 18px 10px 18px;
+            display: block;
+        }
+        .sponsors-marquee-viewport {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .sponsors-marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            padding-left: 18px;
+            animation: sponsorsScroll 26s linear infinite;
+        }
+        .sponsors-marquee-box:hover .sponsors-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes sponsorsScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .sponsor-slide {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 245px;
+            min-height: 82px;
+            background: var(--bg-soft);
+            border-radius: 16px;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+        }
+        .sponsor-slide:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 140, 26, 0.25);
+            box-shadow: 0 8px 20px rgba(255, 224, 102, 0.2);
+        }
+        .sponsor-slide img {
+            height: 60px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+        .sponsor-slide-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Contenedor Principal */
+        .main-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 24px 16px 46px 16px;
+        }
+
+        /* Grilla de Programas / Placas */
+        .sec-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.24rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+        }
+        .sec-title span {
+            color: var(--orange-fiesta);
+        }
+        .grid-placas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+            gap: 18px;
+        }
+        .card-rpl {
+            background: var(--bg-card);
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(7px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.36);
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+        .card-rpl:hover {
+            transform: translateY(-3px);
+            background: rgba(54, 20, 70, 0.76);
+        }
+        .card-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: rgba(18, 6, 24, 0.7);
+        }
+        .card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hora-tag {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background: rgba(255, 42, 109, 0.9);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+        .card-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            gap: 8px;
+        }
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 600;
+            color: var(--yellow-gold);
+        }
+        .card-desc {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-dim);
+        }
+        .card-go {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--cyan-pop);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background: rgba(15, 5, 22, 0.76);
+            backdrop-filter: blur(6px);
+            text-align: center;
+            padding: 20px 16px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="diamond-sparkles" aria-hidden="true"></div>
+
+    <div class="rpl-marquee">
+        <div class="rpl-marquee-track">
+            <span><span class="m-tag">Todos los días 12 a 14 hs</span> Conexión en vivo desde Buenos Aires por R.P.L.</span>
+            <span><span class="m-tag">En Vivo 24/7</span> Cumbia, cuarteto, latinos y éxitos populares</span>
+            <span><span class="m-tag">¡Votá!</span> Elegí cómo está sonando la radio con los emojis</span>
+        </div>
+    </div>
+
+    <div class="top-social-bar" aria-label="Redes sociales de R.P.L.">
+        <a href="https://wa.me/5492612540460" target="_blank" rel="noopener noreferrer" class="icon-link ic-wa" title="WhatsApp • 2612540460" aria-label="WhatsApp 2612540460">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.88 11.88 0 0 0 5.77 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.47-8.43zm-8.45 18.33h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 7c0 5.45-4.44 9.89-9.89 9.89zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61594626947380" target="_blank" rel="noopener noreferrer" class="icon-link ic-fb" title="Facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.75l.41-3.2H13.5V8.56c0-.93.26-1.56 1.59-1.56h1.7V4.14A22.7 22.7 0 0 0 14.31 4c-2.45 0-4.13 1.5-4.13 4.24v2.36H7.4v3.2h2.78V22h3.32z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="icon-link ic-ig" title="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74 0 8.33.01 7.05.07 5.77.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.12 1.38A5.86 5.86 0 0 0 .64 4.13C.34 4.89.14 5.76.08 7.04.02 8.32 0 8.73 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.12.66.66 1.33 1.07 2.12 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.12-1.38 5.86 5.86 0 0 0 1.38-2.12c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.12A5.86 5.86 0 0 0 19.86.63C19.1.33 18.23.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="icon-link ic-yt" title="YouTube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.6 15.5V8.5l6.27 3.5-6.27 3.5z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="icon-link ic-tk" title="TikTok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.2 8.2 0 0 0 4.76 1.52V6.81a4.84 4.84 0 0 1-1-.12z"/></svg>
+        </a>
+    </div>
+
+    <section class="hero-tropical">
+        <img src="rplradiopopularlatina.png" alt="Radio Popular Latina — R.P.L." class="rpl-logo-top">
+        <span class="rpl-kicker">Radio Popular Latina</span>
+        <h1>R.P.L. • La fiesta de todos los días</h1>
+        <div class="hero-lema">Tu música, tu compañía, tu estación</div>
+        <p class="brand-desc">Cumbia, cuarteto, ritmos latinos y éxitos populares las 24 horas.</p>
+
+        <div class="station-live-card">
+            <div class="live-header-row">
+                <span class="vivo-pill"><span class="vivo-dot"></span> En Vivo</span>
+                <span class="signal-meter">Señal HD • 100% Latina</span>
+            </div>
+            <div class="song-line">
+                <span class="song-main" id="rpl-now-playing">SONANDO: Éxitos populares y latinos 24/7</span>
+                
+            </div>
+            <audio id="rpl-audio-player" controls preload="none">
+                <source id="rpl-audio-source" src="https://stream.zeno.fm/0yz5fs6u498uv" type="audio/mpeg">
+            </audio>
+            <div class="player-status-hint" id="rpl-player-hint">Radio Popular Latina las 24 hs en vivo".</div>
+
+            <div class="reactions-strip" id="emoji-votes"></div>
+        </div>
+    </section>
+
+    <!-- Marquesina Móvil de Anunciantes (PNG + Enlace) -->
+    <section class="sponsors-marquee-wrap" aria-label="Anunciantes">
+        <div class="sponsors-marquee-box">
+            <span class="sponsors-marquee-label">Acompañan • Anunciantes</span>
+            <div class="sponsors-marquee-viewport">
+                <div class="sponsors-marquee-track" id="sponsors-marquee-track"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-wrap">
+        <h2 class="sec-title">Programas y <span>Señales</span></h2>
+        <div class="grid-placas" id="rpl-placas"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 <strong>Radio Popular Latina</strong> • R.P.L. • La fiesta de todos los días • Mendoza Multimedios.</p>
+    </footer>
+
+    <script>
+        const ZENO_MOUNT_RPL = "0yz5fs6u498uv";
+
+        (function configurarStreamRPL() {
+            const audioEl = document.getElementById("rpl-audio-player");
+            const sourceEl = document.getElementById("rpl-audio-source");
+            const hintEl = document.getElementById("rpl-player-hint");
+            const songEl = document.getElementById("rpl-now-playing");
+            const idEl = document.getElementById("rpl-track-id");
+
+            if (!audioEl || !sourceEl) return;
+
+            const tieneMountReal = Boolean(ZENO_MOUNT_RPL) && ZENO_MOUNT_RPL !== "TU_MOUNT_RPL";
+            const streamUrl = tieneMountReal
+                ? `https://stream.zeno.fm/${encodeURIComponent(ZENO_MOUNT_RPL)}`
+                : "https://stream.zeno.fm/TU_MOUNT_RPL";
+
+            sourceEl.src = streamUrl;
+            audioEl.load();
+
+            audioEl.addEventListener("error", () => {
+                if (hintEl) {
+                    hintEl.textContent = "Radio Popular Latina las 24 hs en vivo";
+                }
+            });
+
+            if (tieneMountReal && window.EventSource) {
+                const source = new EventSource(`https://api.zeno.fm/mounts/metadata/subscribe/${encodeURIComponent(ZENO_MOUNT_RPL)}`);
+                source.onmessage = function(event) {
+                    try {
+                        const data = JSON.parse(event.data);
+                        const titulo = (data.streamTitle || "").trim();
+                        const trackId = (data.songId || data.id || data.trackId || "").toString().trim();
+
+                        if (titulo && titulo.toLowerCase() !== "unknown" && songEl) {
+                            songEl.textContent = "SONANDO: " + titulo;
+                        }
+
+                        if (idEl) {
+                            if (trackId) {
+                                idEl.textContent = " " + trackId;
+                            } else if (titulo && titulo.toLowerCase() !== "unknown") {
+                                let hash = 0;
+                                for (let i = 0; i < titulo.length; i++) {
+                                    hash = ((hash << 5) - hash) + titulo.charCodeAt(i);
+                                    hash |= 0;
+                                }
+                                idEl.textContent = " #" + Math.abs(hash).toString(36).toUpperCase().slice(0, 6);
+                            }
+                        }
+                    } catch (e) {}
+                };
+            }
+        })();
+
+        const OPCIONES_EMOJI = [
+            { id: "fiesta", emoji: "🔥", texto: "¡A todo ritmo!", base: 24 },
+            { id: "bailar", emoji: "💃", texto: "¡Para bailar!", base: 19 },
+            { id: "temazo", emoji: "🎶", texto: "¡Qué temazo!", base: 31 },
+            { id: "corazon", emoji: "❤️", texto: "¡Me encanta!", base: 27 }
+        ];
+
+        const STORAGE_KEY = "rpl_votos_v1";
+        const STORAGE_USER_VOTE = "rpl_mi_voto_v1";
+
+        function leerVotos() {
+            const guardado = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+            const mapa = {};
+            OPCIONES_EMOJI.forEach(op => {
+                mapa[op.id] = typeof guardado[op.id] === "number" ? guardado[op.id] : op.base;
+            });
+            return mapa;
+        }
+
+        function renderEmojis() {
+            const votos = leerVotos();
+            const miVoto = localStorage.getItem(STORAGE_USER_VOTE);
+            const cont = document.getElementById("emoji-votes");
+
+            cont.innerHTML = OPCIONES_EMOJI.map(op => `
+                <button type="button" class="emoji-vote-btn ${miVoto === op.id ? "voted" : ""}" data-id="${op.id}">
+                    <span class="emoji-icon">${op.emoji}</span>
+                    <span class="emoji-label">${op.texto}</span>
+                    <span class="emoji-count">${votos[op.id]} votos</span>
+                </button>
+            `).join("");
+
+            cont.querySelectorAll(".emoji-vote-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const id = btn.dataset.id;
+                    const actual = leerVotos();
+                    const anterior = localStorage.getItem(STORAGE_USER_VOTE);
+
+                    if (anterior && actual[anterior] > 0) {
+                        actual[anterior] -= 1;
+                    }
+                    actual[id] += 1;
+
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(actual));
+                    localStorage.setItem(STORAGE_USER_VOTE, id);
+                    renderEmojis();
+                });
+            });
+        }
+
+        renderEmojis();
+
+        const ANUNCIANTES_RPL = 
+           [    
+            
+            {
+                nombre: "Estamos aquí",
+                imagen: "laesquinapizzas.png",
+                enlace: "https://www.google.com/local/place/fid/0x967e7502692ecc5b:0x4c45ef66fd9726be/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3DjGfcIOP6JwQnIUaGTvAcIA%26cb_client%3Dlu.gallery.gps%26w%3D160%26h%3D106%26yaw%3D47.43724%26pitch%3D0%26thumbfov%3D100&ik=CAISFmpHZmNJT1A2SndRbklVYUdUdkFjSUE%3D&vp=Dby_PUIVAAAAAA"
+            }, {
+                nombre: "Estamos aquí",
+                imagen: "elangeldetornillo.png",
+                enlace: "https://www.google.com/maps/place/J.+A.+Maza+%26+Calle+Honduras,+M5515+Maip%C3%BA,+Mendoza/@-32.9468602,-68.7857194,783a,27.6y,72.6h,88.4t/data=!3m7!1e1!3m5!1spLjnd49JhGIaXg3towiRGA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.5951094216643469%26panoid%3DpLjnd49JhGIaXg3towiRGA%26yaw%3D72.60386348824282!7i16384!8i8192!4m15!1m8!3m7!1s0x967e0c42b50bd81b:0xb5cf482beafbab19!2sJ.+A.+Maza+%26+Calle+Honduras,+M5515+Maip%C3%BA,+Mendoza!3b1!8m2!3d-32.9468255!4d-68.785711!16s%2Fg%2F11gdqth_x8!3m5!1s0x967e0c42b50bd81b:0xb5cf482beafbab19!8m2!3d-32.9468255!4d-68.785711!16s%2Fg%2F11gdqth_x8?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D/"
+            },
+            {
+                nombre: "Estamos aquí",
+                imagen: "distribuidoramaipu.png",
+                enlace: "https://www.https://www.google.com/maps/place/Distribuidora+Maip%C3%BA/@-32.9400722,-68.7821824,772a,75y,303.14h,90t/data=!3m7!1e1!3m5!1sUhvnQTqoZvOscu8F6T-HLQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DUhvnQTqoZvOscu8F6T-HLQ%26yaw%3D303.144!7i16384!8i8192!4m6!3m5!1s0x967e0d49af8bd629:0xd5c6f9e1fcc862e5!8m2!3d-32.9398803!4d-68.7828979!16s%2Fg%2F11grvjtk6l?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D/"
+            },
+            {
+                nombre: "Estamos aquí",
+                imagen: "Azocar.png",
+                enlace: "https://maps.app.goo.gl/bKTA9FXzTLEa5Tr9A"
+            },
+            {
+                nombre: "Estamos aquí",
+                imagen: "panificadoralaprincesa.png",
+                enlace: "https://www.google.com/maps/place/R%C3%ADo+Seco,+La+Rioja/@-29.4135174,-66.8796481,570a,56y,190.88h,73.16t/data=!3m7!1e1!3m5!1spA1NUlrZjcqgoCi3aKT2PQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D16.83659100090871%26panoid%3DpA1NUlrZjcqgoCi3aKT2PQ%26yaw%3D190.88082278841122!7i16384!8i8192!4m6!3m5!1s0x9427dbb3d59805b1:0x5715ba9d7afd10f7!8m2!3d-29.4071949!4d-66.8616976!16s%2Fg%2F11fmz20ycc?entry=ttu&g_ep=EgoyMDI2MTEyMi4wIKXMDSoASAFQAw%3D%3D"
+            },
+        ];
+
+        (function renderAnunciantes() {
+            const track = document.getElementById("sponsors-marquee-track");
+            if (!track || !ANUNCIANTES_RPL.length) return;
+
+            const bloqueHtml = ANUNCIANTES_RPL.map(an => `
+                <a href="${an.enlace || '#'}" target="_blank" rel="noopener noreferrer" class="sponsor-slide">
+                    <img src="${an.imagen || ''}" alt="${an.nombre || 'Anunciante'}">
+                    <span class="sponsor-slide-name">${an.nombre || ''}</span>
+                </a>
+            `).join("");
+
+            track.innerHTML = bloqueHtml + bloqueHtml;
+        })();
+
+        const PLACAS_RPL = [
+            {
+                titulo: "Conexión Buenos Aires",
+                horario: "Todos los días • 12 a 14 hs",
+                imagen: "Anunciantes/fmpasionbanner.png",
+                descripcion: "En el aire de R.P.L. todos los días de 12 a 14.",
+                enlace: "https://fmpasion.net/",
+                ir: "Ir"
+            },
+            {
+                titulo: "Cumbia vs Cuarteto",
+                horario: "Todos los días • Tarde",
+                imagen: "Anunciantes/cumbiavscuarteto.png",
+                descripcion: "Cumbia, latinos y clásicos populares.",
+                enlace: "https://fmpasion.net/",
+                ir: "Ir"
+            }
+        ];
+
+        document.getElementById("rpl-placas").innerHTML = PLACAS_RPL.map(p => `
+            <a href="${p.enlace}" target="_blank" rel="noopener noreferrer" class="card-rpl">
+                <div class="card-img-box">
+                    <img src="${p.imagen}" alt="${p.titulo}">
+                    <span class="hora-tag">${p.horario}</span>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <div class="card-title">${p.titulo}</div>
+                        <div class="card-desc">${p.descripcion}</div>
+                   
+                    </div>
+                </div>
+            </a>
+        `).join("");
+
+        const PROGRAMACION_SEMANAL = [
+            {
+                id: "lunes",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "martes",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "miercoles",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "jueves",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "viernes",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "sabado",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            },
+            {
+                id: "domingo",
+                franjas: [
+                    { hora: "00:00 - 12:00", inicio: 0, fin: 12, programa: "La fiesta de todos los días" },
+                    { hora: "12:00 - 14:00", inicio: 12, fin: 14, programa: "FM Pasión en directo" },
+                    { hora: "14:00 - 24:00", inicio: 14, fin: 24, programa: "Cumbia vs Cuarteto" }
+                ]
+            }
+        ];
+    </script>
+</body>
+</html>
