@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación F.U.VA - Uniendo Valores Humanos y Ambientales</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fuvaFuchsia: '#d946ef',
+                        fuvaFuchsiaDark: '#c026d3',
+                        fuvaGreen: '#22c55e',
+                        fuvaGreenDark: '#16a34a',
+                        fuvaBlue: '#0284c7',
+                        fuvaDark: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%), 
+                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        /* Animación de carrusel infinito para logos */
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- BARRA SUPERIOR DE ANUNCIOS / CONTACTO RÁPIDO -->
+    <div class="bg-fuvaDark text-slate-300 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-envelope text-fuvaGreen mr-1"></i> contacto@fuva.org.ar</span>
+                <span><i class="fa-solid fa-location-dot text-fuvaFuchsia mr-1"></i> Mendoza, Argentina</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="font-semibold text-slate-200">¡Sumate a transformar vidas!</span>
+                <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20colaborar%20con%20la%20Fundación%20F.U.VA" target="_blank" class="text-fuvaGreen hover:underline font-bold"><i class="fa-brands fa-whatsapp text-sm mr-1"></i>Escribinos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVEGACIÓN PRINCIPAL -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- LOGO F.U.VA -->
+                <a href="#inicio" class="flex items-center space-x-3">
+                    <img src="logo_fuva.png" alt="Logo Fundación F.U.VA" class="h-16 w-auto object-contain">
+                </a>
+
+                <!-- NAVEGACIÓN DESKTOP -->
+                <nav class="hidden lg:flex items-center space-x-6 font-medium text-slate-700 text-sm">
+                    <a href="#inicio" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia">Inicio</a>
+                    <a href="#nosotros" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia">Nosotros</a>
+                    <a href="#pilares" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia">Pilares</a>
+                    <a href="#proyectos" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia">Proyectos</a>
+                    <a href="historial.html" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia font-semibold text-fuvaBlue">Historial</a>
+                    <a href="#contacto" class="hover:text-fuvaFuchsia transition-colors duration-200 py-1 border-b-2 border-transparent hover:border-fuvaFuchsia">Contacto</a>
+                </nav>
+
+                <!-- BOTÓN SUMATE / DONAR -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="openModal()" class="bg-gradient-to-r from-fuvaFuchsia to-fuvaFuchsiaDark text-white px-5 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center space-x-2 text-sm">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Sumate / Donación</span>
+                    </button>
+                </div>
+
+                <!-- BOTÓN MENÚ MÓVIL -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-slate-700 hover:text-fuvaFuchsia focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENÚ MÓVIL DESPLEGABLE -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#inicio" onclick="toggleMenu()" class="block py-2 text-slate-800 font-medium hover:text-fuvaFuchsia">Inicio</a>
+            <a href="#nosotros" onclick="toggleMenu()" class="block py-2 text-slate-800 font-medium hover:text-fuvaFuchsia">Nosotros</a>
+            <a href="#pilares" onclick="toggleMenu()" class="block py-2 text-slate-800 font-medium hover:text-fuvaFuchsia">Pilares</a>
+            <a href="#proyectos" onclick="toggleMenu()" class="block py-2 text-slate-800 font-medium hover:text-fuvaFuchsia">Proyectos</a>
+            <a href="historial.html" class="block py-2 text-fuvaBlue font-bold hover:text-fuvaFuchsia">Historial y Aliados →</a>
+            <a href="#contacto" onclick="toggleMenu()" class="block py-2 text-slate-800 font-medium hover:text-fuvaFuchsia">Contacto</a>
+            <button onclick="openModal(); toggleMenu();" class="w-full bg-fuvaFuchsia text-white py-3 rounded-xl font-bold shadow flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-heart"></i>
+                <span>Sumate / Donación</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="inicio" class="hero-gradient relative text-white py-24 lg:py-36 px-4 sm:px-6 lg:px-8 flex items-center min-h-[85vh]">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-fuvaGreen border border-white/10 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-fuvaGreen animate-pulse"></span>
+                        <span>Compromiso Social y Ecológico</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-6">
+                        Uniendo valores <span class="text-fuvaFuchsia">humanos</span> y <span class="text-fuvaGreen">ambientales</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 font-light leading-relaxed mb-8 border-l-4 border-fuvaFuchsia pl-4">
+                        "Uniendo valores humanos y ambientales para construir el futuro."
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#proyectos" class="bg-fuvaGreen hover:bg-fuvaGreenDark text-white px-7 py-3.5 rounded-full font-bold shadow-lg hover:shadow-green-500/30 transition-all duration-300 text-center flex items-center justify-center space-x-2">
+                            <span>Conocer Proyectos</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20unirme%20como%20voluntario%20a%20F.U.VA" target="_blank" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-7 py-3.5 rounded-full font-bold transition-all duration-300 text-center flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-fuvaGreen text-lg"></i>
+                            <span>Unirme como Voluntario</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CURVA DE SEPARACIÓN -->
+            <div class="absolute bottom-0 left-0 right-0 h-12 bg-slate-50 [clip-path:polygon(0_100%,100%_100%,100%_0)]"></div>
+        </section>
+
+        <!-- SECCIÓN NOSOTROS Y CONCEPTO DEL LOGO -->
+        <section id="nosotros" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- CONTENEDOR PNG SIMBÓLICO F.U.VA -->
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-72 h-72 bg-fuvaFuchsia/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-fuvaGreen/10 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 space-y-6">
+                        <div class="flex items-center justify-center p-6 bg-slate-50 rounded-2xl">
+                            <div class="flex flex-col items-center text-center w-full">
+                                <!-- Contenedor para imagen PNG del logo F.U.VA -->
+                                <div class="w-36 h-36 flex items-center justify-center mb-4">
+                                    <img src="logo_fuva.png" alt="Símbolo PNG Fundación F.U.VA" class="max-w-full max-h-full w-auto h-auto object-contain">
+                                </div>
+                                <h3 class="text-3xl font-black tracking-tight text-slate-900">F.U.VA</h3>
+                                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Fundación Uniendo Valores</p>
+                            </div>
+                        </div>
+
+                        <div class="text-sm text-slate-600 space-y-3 leading-relaxed">
+                            <p class="font-semibold text-slate-800">El significado de nuestra identidad:</p>
+                            <p><strong class="text-fuvaFuchsia">El Trazo Fucsia:</strong> Representa el camino que empezamos a trazar para abrazar y unir a las personas, la contención humana y el afecto comunitario.</p>
+                            <p><strong class="text-fuvaGreen">La Hoja Verde:</strong> Simboliza nuestra orientación ambiental, la sustentabilidad y el respeto sagrado por el entorno natural.</p>
+                            <p><strong class="text-fuvaBlue">El Núcleo Azul:</strong> El centro humano, la esperanza y el futuro que formamos en conjunto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEXTO INSTITUCIONAL -->
+                <div class="space-y-6">
+                    <div class="inline-block bg-fuvaFuchsia/10 text-fuvaFuchsia text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Sobre la Fundación
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        Transformamos realidades tejiendo lazos humanos y ambientales
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Nacimos con el propósito firme de tender puentes. Entendemos que no hay desarrollo humano sostenible sin un ambiente sano, ni recuperación ambiental posible sin una comunidad consciente y empoderada.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Trabajamos en comunidad con escuelas e instituciones promoviendo la educación en valores, la solidaridad colectiva y proyectos ecológicos concretos que impactan directamente en la calidad de vida de las familias.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-fuvaFuchsia">100%</span>
+                            <span class="text-xs text-slate-500 font-medium">Transparencia</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-fuvaGreen">+15</span>
+                            <span class="text-xs text-slate-500 font-medium">Talleres Activos</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-fuvaBlue">+500</span>
+                            <span class="text-xs text-slate-500 font-medium">Familias Unidas</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PILARES / VALORES -->
+        <section id="pilares" class="py-20 bg-slate-100 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="bg-fuvaBlue/10 text-fuvaBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nuestra Filosofía</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3 mb-4">Los 3 Pilares Fundamentales</h2>
+                    <p class="text-slate-600">Cada una de nuestras acciones se sostiene sobre la articulación de estos tres ejes de cambio.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-t-4 border-fuvaFuchsia group">
+                        <div class="w-14 h-14 bg-fuvaFuchsia/10 rounded-2xl flex items-center justify-center mb-6 text-fuvaFuchsia group-hover:bg-fuvaFuchsia group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-hand-holding-heart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Valores Humanos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Fomentamos la empatía, la solidaridad, el respeto mutuo y el acompañamiento afectivo a las familias en situación de vulnerabilidad.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaFuchsia mr-2"></i> Integración social</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaFuchsia mr-2"></i> Apoyo comunitario</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-t-4 border-fuvaGreen group">
+                        <div class="w-14 h-14 bg-fuvaGreen/10 rounded-2xl flex items-center justify-center mb-6 text-fuvaGreen group-hover:bg-fuvaGreen group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-seedling text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Compromiso Ambiental</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Promovemos la educación ambiental, el reciclaje, la reforestación y la soberanía alimentaria a través de huertas urbanas.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaGreen mr-2"></i> Huertas sustentables</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaGreen mr-2"></i> Conciencia ecológica</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-t-4 border-fuvaBlue group">
+                        <div class="w-14 h-14 bg-fuvaBlue/10 rounded-2xl flex items-center justify-center mb-6 text-fuvaBlue group-hover:bg-fuvaBlue group-hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-people-roof text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3"> Formación del Futuro</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Capacitamos a niños y jóvenes con herramientas prácticas para que se conviertan en agentes de cambio positivo dentro de su entorno.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaBlue mr-2"></i> Talleres educativos</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-fuvaBlue mr-2"></i> Liderazgo juvenil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PROYECTOS / CAUSAS -->
+        <section id="proyectos" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="bg-fuvaGreen/10 text-fuvaGreen text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Acción Directa</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Nuestras Campañas Activas</h2>
+                </div>
+                <p class="text-slate-600 text-sm max-w-md mt-4 md:mt-0">
+                    Tu apoyo permite que cada uno de estos proyectos siga creciendo y generando impacto real en la comunidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="huerta_fuva.png" alt="Huertas Comunitarias" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-fuvaGreen uppercase tracking-wider bg-fuvaGreen/10 px-2.5 py-0.5 rounded-full">Sustentabilidad</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Huertas Orgánicas en Comunidad</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            Instalación de espacios agroecológicos de autoconsumo para enseñar cultivo ecológico y garantizar alimento fresco a las familias.
+                        </p>
+                        <div class="space-y-1.5 mb-6">
+                            <div class="flex justify-between text-xs font-semibold">
+                                <span class="text-slate-600">Alcanzado: 75%</span>
+                                <span class="text-fuvaGreen">15 / 20 Huertas</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-fuvaGreen h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20apoyar%20el%20proyecto%20de%20Huertas%20Comunitarias" target="_blank" class="block w-full py-2.5 bg-slate-900 hover:bg-fuvaGreen text-white text-center text-xs font-bold rounded-xl transition-colors">
+                            Apoyar este proyecto
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="huertaninos_fuva.png" alt="Educación en Valores" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-fuvaFuchsia uppercase tracking-wider bg-fuvaFuchsia/10 px-2.5 py-0.5 rounded-full">Educación</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Talleres "Sembrando Valores"</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            Encuentros lúdicos para niñas, niños y adolescentes, orientados en el respeto, la no violencia, el trabajo en equipo y el cuidado del ambiente.
+                        </p>
+                        <div class="space-y-1.5 mb-6">
+                            <div class="flex justify-between text-xs font-semibold">
+                                <span class="text-slate-600">Alcanzado: 60%</span>
+                                <span class="text-fuvaFuchsia">300 / 500 Niños</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-fuvaFuchsia h-2.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20apoyar%20el%20proyecto%20Sembrando%20Valores" target="_blank" class="block w-full py-2.5 bg-slate-900 hover:bg-fuvaFuchsia text-white text-center text-xs font-bold rounded-xl transition-colors">
+                            Apoyar este proyecto
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <img src="reciclajemadera_fuva.png" alt="Reciclaje" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-[11px] font-bold text-fuvaBlue uppercase tracking-wider bg-fuvaBlue/10 px-2.5 py-0.5 rounded-full">Comunidad</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-3 mb-2">Reciclaje</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            Recolectamos y reciclamos la madera para producir subproductos e incorporarlos nuvamente en el consumo responsable.
+                        </p>
+                        <div class="space-y-1.5 mb-6">
+                            <div class="flex justify-between text-xs font-semibold">
+                                <span class="text-slate-600">Alcanzado: 85%</span>
+                                <span class="text-fuvaBlue">850 / 1000 Kg</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div class="bg-fuvaBlue h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20apoyar%20el%20proyecto%20de%20Reciclaje%20Solidario" target="_blank" class="block w-full py-2.5 bg-slate-900 hover:bg-fuvaBlue text-white text-center text-xs font-bold rounded-xl transition-colors">
+                            Apoyar este proyecto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- ADELANTO EN PORTADA: ÚLTIMAS ACTIVIDADES + ENLACE A CRONOLOGÍA COMPLETA    -->
+        <!-- ========================================================================= -->
+        <section class="py-20 bg-slate-100 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div>
+                        <span class="bg-fuvaFuchsia/10 text-fuvaFuchsia text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bitácora Reciente</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Últimas Jornadas y Registros</h2>
+                        <p class="text-slate-600 text-sm mt-2 max-w-xl">
+                            Un vistazo rápido a nuestras acciones más recientes en territorio. Explorá la línea de tiempo completa con todas las fotos y videos.
+                        </p>
+                    </div>
+                    <a href="historial.html" class="inline-flex items-center space-x-2 bg-fuvaDark hover:bg-fuvaFuchsia text-white px-6 py-3 rounded-full font-bold text-xs shadow-md transition-all self-start md:self-auto">
+                        <span>Ver cronología completa</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 3 TARJETAS RESUMEN -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- TARJETA 1 -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col">
+                        <div class="relative h-48">
+                            <img src="semillas_plantines.png" alt="Jornada de Siembra" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-fuvaGreen text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow">
+                                <i class="fa-solid fa-camera mr-1"></i> Noviembre 2026
+                            </span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900 mb-2">Jornada de Siembra y Entrega de Plantines</h3>
+                                <p class="text-slate-600 text-xs leading-relaxed">
+                                    Preparación de nuevos bancales agroecológicos en Maipú junto a vecinos y voluntarios.
+                                </p>
+                            </div>
+                            <a href="historial.html" class="mt-4 inline-flex items-center text-xs font-bold text-fuvaGreen hover:underline">
+                                Ver en el historial <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA 2 -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col">
+                        <div class="relative h-48">
+                            <img src="semillas_plantines.jpg" alt="Video Taller" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-fuvaFuchsia text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow">
+                                <i class="fa-solid fa-video mr-1"></i> Octubre 2026
+                            </span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900 mb-2">Programa Audiovisual: Taller "Sembrando Valores"</h3>
+                                <p class="text-slate-600 text-xs leading-relaxed">
+                                    Resumen de encuentros recreativos con niños y jóvenes sobre respeto y cuidado ambiental.
+                                </p>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=tuf9iOXky8I" target="_blank" class="mt-4 inline-flex items-center text-xs font-bold text-fuvaFuchsia hover:underline">
+                                Ver video en YouTube <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA 3 -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col">
+                        <div class="relative h-48">
+                            <img src="reciclajemadera.png" alt="Reciclaje" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-fuvaBlue text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow">
+                                <i class="fa-solid fa-camera mr-1"></i> Septiembre 2026
+                            </span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-base font-bold text-slate-900 mb-2">Recuperación de Madera Descartada</h3>
+                                <p class="text-slate-600 text-xs leading-relaxed">
+                                    Superamos los 850 kg recuperados transformando descartes en cajones de cultivo y mobiliario.
+                                </p>
+                            </div>
+                            <a href="historial.html" class="mt-4 inline-flex items-center text-xs font-bold text-fuvaBlue hover:underline">
+                                Ver en el historial <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- CARRUSEL CONTINUO DE AUSPICIANTES Y ROTADOR DE MENCIONES EN PORTADA       -->
+        <!-- ========================================================================= -->
+        <section class="py-20 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="bg-fuvaGreen/10 text-fuvaGreen text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Red de Apoyo</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Auspiciantes, Donantes y Referentes</h2>
+                </div>
+                <a href="historial.html#auspiciantes" class="text-xs font-bold text-fuvaBlue hover:text-fuvaFuchsia transition-colors flex items-center space-x-1">
+                    <span>Ver directorio completo de aliados y menciones</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- CARRUSEL DE LOGOS DESLIZANTE -->
+            <div class="relative w-full py-6 bg-slate-50 border-y border-slate-200/80 mb-14">
+                <div class="animate-marquee flex items-center space-x-8 px-4">
+                    <!-- BLOQUE DE LOGOS (Se duplica abajo para efecto infinito fluido) -->
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-building text-2xl text-fuvaGreen"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Empresa Aliada 1</span>
+                            <span class="block text-[10px] text-slate-500">Auspiciante Oficial</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-store text-2xl text-fuvaFuchsia"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Comercio Amigo 2</span>
+                            <span class="block text-[10px] text-slate-500">Donante de Insumos</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-tractor text-2xl text-fuvaBlue"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Vivero Regional 3</span>
+                            <span class="block text-[10px] text-slate-500">Aliado Ambiental</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-handshake-angle text-2xl text-amber-500"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Institución 4</span>
+                            <span class="block text-[10px] text-slate-500">Madrina de Talleres</span>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICADO PARA LOOP INFINITO SIN CORTES -->
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-building text-2xl text-fuvaGreen"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Empresa Aliada 1</span>
+                            <span class="block text-[10px] text-slate-500">Auspiciante Oficial</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-store text-2xl text-fuvaFuchsia"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Comercio Amigo 2</span>
+                            <span class="block text-[10px] text-slate-500">Donante de Insumos</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-tractor text-2xl text-fuvaBlue"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Vivero Regional 3</span>
+                            <span class="block text-[10px] text-slate-500">Aliado Ambiental</span>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 bg-white rounded-2xl border border-slate-200 px-5 flex items-center space-x-3 shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-handshake-angle text-2xl text-amber-500"></i>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-800">Institución 4</span>
+                            <span class="block text-[10px] text-slate-500">Madrina de Talleres</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROTADOR INTERACTIVO DE MENCIONES REFERENTES -->
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-slate-900 rounded-3xl p-8 sm:p-10 text-white relative shadow-xl">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-xs font-bold text-fuvaGreen uppercase tracking-widest flex items-center gap-2">
+                            <i class="fa-solid fa-quote-left text-fuvaFuchsia text-lg"></i> Menciones Referentes
+                        </span>
+                        <div class="flex space-x-2">
+                            <button onclick="prevTestimonial()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-fuvaFuchsia text-white flex items-center justify-center transition-colors" title="Anterior">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="nextTestimonial()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-fuvaFuchsia text-white flex items-center justify-center transition-colors" title="Siguiente">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="testimonialContainer" class="min-h-[110px] flex flex-col justify-between transition-opacity duration-300">
+                        <p id="testimonialQuote" class="text-slate-200 text-base sm:text-lg italic leading-relaxed mb-6">
+                            "El trabajo territorial de F.U.VA demuestra que cuando se unen la educación en valores y el cuidado concreto de la tierra, las familias responden con un compromiso ejemplar."
+                        </p>
+                        <div class="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/10">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-fuvaFuchsia/20 text-fuvaFuchsia flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <span id="testimonialAuthor" class="block text-sm font-bold text-white">Nombre del Referente 1</span>
+                                    <span id="testimonialRole" class="block text-xs text-slate-400">Director/a de Institución Educativa - Mendoza</span>
+                                </div>
+                            </div>
+                            <a href="historial.html#referentes" class="text-xs font-bold text-fuvaGreen hover:underline">
+                                Leer todas las menciones →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER DE CONTACTO DIRECTO -->
+        <section id="contacto" class="py-16 bg-gradient-to-r from-[#e8f5e9] to-[#fefae0] text-slate-800 px-4 sm:px-6 lg:px-8 border-t border-b border-emerald-100">
+            <div class="max-w-5xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-emerald-200/60 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="space-y-4 text-center md:text-left max-w-xl">
+                    <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Contacto Inmediato</span>
+                    <h2 class="text-3xl font-extrabold tracking-tight text-slate-900">¿Querés comunicarte directo con la Fundación F.U.VA?</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                         Contactate través de nuestro WhatsApp oficial.
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <a href="https://wa.me/5492616930800?text=Hola,%20me%20comunico%20desde%20la%20web%20oficial%20de%20la%20Fundación%20F.U.VA%20para%20más%20información" target="_blank" class="inline-flex items-center space-x-3 bg-fuvaGreen hover:bg-fuvaGreenDark text-white px-8 py-4 rounded-full font-extrabold text-base shadow-xl hover:shadow-green-500/20 transform hover:-translate-y-1 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Iniciar Chat de WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white text-slate-600 text-sm border-t-2 border-fuvaBlue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <img src="logo_fuva.png" alt="Logo Fundación F.U.V.A" class="h-10 w-auto object-contain">
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        F.U.V.A Uniendo valores humanos y ambientales para formar el futuro.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">Navegación</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-fuvaGreen transition-colors">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-fuvaGreen transition-colors">Nosotros</a></li>
+                        <li><a href="#pilares" class="hover:text-fuvaGreen transition-colors">Nuestros Pilares</a></li>
+                        <li><a href="#proyectos" class="hover:text-fuvaGreen transition-colors">Proyectos</a></li>
+                        <li><a href="historial.html" class="hover:text-fuvaGreen transition-colors font-semibold text-fuvaBlue">Historial Completo y Aliados</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">Compromisos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-fuvaGreen mr-2"></span> Integración Humana</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span> Cuidado Ambiental</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-fuvaGreen mr-2"></span> Transparencia Institucional</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 font-bold mb-4 text-xs uppercase tracking-wider">Contacto</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-location-dot text-fuvaGreen mt-0.5"></i>
+                            <span>Mendoza, Argentina</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-envelope text-emerald-600 mt-0.5"></i>
+                            <span>contacto@fuva.org.ar</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-brands fa-whatsapp text-fuvaGreen mt-0.5"></i>
+                            <span>+54 9 261 693-0800</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 space-y-4 sm:space-y-0">
+                <p>&copy; 2026 Fundación F.U.VA - Todos los derechos reservados.</p>
+                <p class="flex items-center space-x-1">
+                    <span>Hosting stage</span>
+                    <strong class="text-slate-800">Communications Manager</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/5492616930800?text=Hola,%20me%20comunico%20desde%20la%20web%20oficial%20de%20la%20Fundación%20F.U.VA" target="_blank" class="fixed bottom-6 right-6 bg-fuvaGreen hover:bg-fuvaGreenDark text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl z-50 transform hover:scale-110 transition-all duration-300" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- MODAL DE DONACIÓN / SUMATE -->
+    <div id="donationModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center space-y-3 mb-6">
+                <div class="w-12 h-12 bg-fuvaFuchsia/10 text-fuvaFuchsia rounded-2xl flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900">Sumate a F.U.VA</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Elegí cómo querés colaborar. Al hacer clic serás redirigido a nuestra línea de atención directa para coordinar.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20hacer%20una%20DONACIÓN%20económica%20a%20la%20Fundación%20F.U.VA" target="_blank" class="flex items-center p-3.5 border border-slate-200 rounded-xl hover:border-fuvaFuchsia hover:bg-fuvaFuchsia/5 transition-all group">
+                    <div class="w-10 h-10 bg-fuvaFuchsia/10 text-fuvaFuchsia rounded-lg flex items-center justify-center mr-3 group-hover:bg-fuvaFuchsia group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-slate-800">Donación Económica</span>
+                        <span class="block text-[11px] text-slate-500">Coordinación directa de transferencias o aportes</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20donar%20INSUMOS%20o%20HERRAMIENTAS%20a%20F.U.VA" target="_blank" class="flex items-center p-3.5 border border-slate-200 rounded-xl hover:border-fuvaGreen hover:bg-fuvaGreen/5 transition-all group">
+                    <div class="w-10 h-10 bg-fuvaGreen/10 text-fuvaGreen rounded-lg flex items-center justify-center mr-3 group-hover:bg-fuvaGreen group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-slate-800">Donación de Insumos</span>
+                        <span class="block text-[11px] text-slate-500">Herramientas de huerta, semillas, útiles o pintura</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/5492616930800?text=Hola,%20quiero%20sumarme%20como%20VOLUNTARIO%20en%20F.U.VA" target="_blank" class="flex items-center p-3.5 border border-slate-200 rounded-xl hover:border-fuvaBlue hover:bg-fuvaBlue/5 transition-all group">
+                    <div class="w-10 h-10 bg-fuvaBlue/10 text-fuvaBlue rounded-lg flex items-center justify-center mr-3 group-hover:bg-fuvaBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-slate-800">Sumarme como Voluntario</span>
+                        <span class="block text-[11px] text-slate-500">Aportá tu tiempo y conocimientos en los proyectos</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="closeModal()" class="text-xs text-slate-400 underline hover:text-slate-600">Cerrar ventana</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS JS -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMenu() { mobileMenu.classList.toggle('hidden'); }
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        const donationModal = document.getElementById('donationModal');
+        function openModal() { donationModal.classList.remove('hidden'); }
+        function closeModal() { donationModal.classList.add('hidden'); }
+        window.addEventListener('click', (e) => { if (e.target === donationModal) closeModal(); });
+
+        // Rotador automático y manual de menciones referentes en portada
+        const testimonials = [
+            {
+                quote: '"El trabajo territorial de F.U.VA demuestra que cuando se unen la educación en valores y el cuidado concreto de la tierra, las familias responden con un compromiso ejemplar."',
+                author: 'Nombre del Referente 1',
+                role: 'Director/a de Institución Educativa - Mendoza'
+            },
+            {
+                quote: '"Acompañamos las jornadas de reciclaje y huertas comunitarias porque vemos resultados reales, transparencia en cada acción y un impacto positivo directo en los barrios."',
+                author: 'Nombre del Referente 2',
+                role: 'Referente Comunitario / Especialista Ambiental'
+            },
+            {
+                quote: '"Ver a los chicos aprender a cuidar una huerta y trabajar en equipo es la mejor inversión social que podemos apoyar como empresa mendocina."',
+                author: 'Nombre del Referente 3',
+                role: 'Representante de Empresa Auspiciante'
+            }
+        ];
+
+        let currentTestimonial = 0;
+        function renderTestimonial() {
+            const container = document.getElementById('testimonialContainer');
+            container.style.opacity = 0;
+            setTimeout(() => {
+                document.getElementById('testimonialQuote').textContent = testimonials[currentTestimonial].quote;
+                document.getElementById('testimonialAuthor').textContent = testimonials[currentTestimonial].author;
+                document.getElementById('testimonialRole').textContent = testimonials[currentTestimonial].role;
+                container.style.opacity = 1;
+            }, 200);
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            renderTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            renderTestimonial();
+        }
+
+        // Rotación automática cada 7 segundos
+        setInterval(nextTestimonial, 7000);
+    </script>
+</body>
+</html>

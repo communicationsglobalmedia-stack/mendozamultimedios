@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Actividades y Aliados - Fundación F.U.VA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fuvaFuchsia: '#d946ef',
+                        fuvaFuchsiaDark: '#c026d3',
+                        fuvaGreen: '#22c55e',
+                        fuvaGreenDark: '#16a34a',
+                        fuvaBlue: '#0284c7',
+                        fuvaDark: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- BARRA SUPERIOR -->
+    <div class="bg-fuvaDark text-slate-300 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-envelope text-fuvaGreen mr-1"></i> contacto@fuva.org.ar</span>
+                <span><i class="fa-solid fa-location-dot text-fuvaFuchsia mr-1"></i> Mendoza, Argentina</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="Index.html" class="text-white hover:text-fuvaGreen font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a la página principal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER SECUNDARIO -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="Index.html" class="flex items-center space-x-3">
+                    <img src="logo_fuva.png" alt="Logo Fundación F.U.VA" class="h-14 w-auto object-contain">
+                </a>
+
+                <nav class="hidden md:flex items-center space-x-6 font-medium text-slate-700 text-sm">
+                    <a href="Index.html" class="hover:text-fuvaFuchsia transition-colors">Inicio</a>
+                    <a href="#cronologia" class="text-fuvaFuchsia font-bold">Cronología Completa</a>
+                    <a href="#auspiciantes" class="hover:text-fuvaFuchsia transition-colors">Auspiciantes y Donantes</a>
+                    <a href="#referentes" class="hover:text-fuvaFuchsia transition-colors">Menciones Referentes</a>
+                </nav>
+
+                <a href="Index.html" class="bg-slate-900 hover:bg-fuvaFuchsia text-white px-5 py-2.5 rounded-full font-semibold text-xs shadow transition-colors flex items-center space-x-2">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Volver al Inicio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ENCABEZADO DE PÁGINA -->
+    <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <span class="bg-fuvaGreen/20 text-fuvaGreen text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Archivo Institucional</span>
+            <h1 class="text-3xl sm:text-5xl font-black mt-3 mb-4">Memoria de Actividades y Red de Apoyo</h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                Recorré paso a paso nuestras jornadas comunitarias, talleres educativos y el acompañamiento de quienes hacen posible cada proyecto en Mendoza.
+            </p>
+        </div>
+    </section>
+
+    <main class="flex-grow">
+
+        <!-- SECCIÓN 1: CRONOLOGÍA COMPLETA -->
+        <section id="cronologia" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4 border-b border-slate-200 pb-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Historial Cronológico</h2>
+                    <p class="text-slate-500 text-xs mt-1">Ordenado desde las jornadas más recientes hacia atrás</p>
+                </div>
+
+                <!-- FILTROS -->
+                <div class="inline-flex bg-white p-1.5 rounded-full shadow-sm border border-slate-200 self-start md:self-auto">
+                    <button onclick="filterHistory('all')" id="btn-all" class="filter-btn bg-fuvaDark text-white px-4 py-1.5 rounded-full text-xs font-bold transition-all">Todos</button>
+                    <button onclick="filterHistory('foto')" id="btn-foto" class="filter-btn text-slate-600 hover:text-fuvaFuchsia px-4 py-1.5 rounded-full text-xs font-bold transition-all">Fotos</button>
+                    <button onclick="filterHistory('video')" id="btn-video" class="filter-btn text-slate-600 hover:text-fuvaGreen px-4 py-1.5 rounded-full text-xs font-bold transition-all">Videos</button>
+                </div>
+            </div>
+
+            <!-- LÍNEA DE TIEMPO -->
+            <div class="relative border-l-2 border-fuvaFuchsia/30 ml-3 md:ml-6 space-y-10 pb-4">
+
+                <!-- ACTIVIDAD 1 -->
+                <div class="history-item relative pl-8 md:pl-10" data-type="foto">
+                    <span
