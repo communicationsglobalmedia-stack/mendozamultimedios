@@ -31,37 +31,15 @@
             background-color: var(--bg-site);
             color: var(--text-main);
             line-height: 1.5;
+            padding-bottom: 40px;
         }
 
-        /* Barra Superior Institucional */
-        .sitec-top-header {
+        /* Línea superior en color azul federal */
+        .federal-top-stripe {
+            height: 8px;
+            width: 100%;
             background: linear-gradient(90deg, var(--federal-blue) 0%, var(--federal-light) 100%);
-            color: #ffffff;
-            font-size: 0.8rem;
-            padding: 7px 0;
             border-bottom: 2px solid var(--accent-gold);
-        }
-        .sitec-top-container {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .sitec-top-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 700;
-            background: rgba(255, 255, 255, 0.16);
-            padding: 2px 10px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-        }
-        .sitec-top-link:hover {
-            background: rgba(255, 255, 255, 0.28);
         }
 
         /* Cabecera Principal */
@@ -86,9 +64,10 @@
         }
         .header-main-brand {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 12px 16px;
+            padding: 12px 16px 10px 16px;
             background: radial-gradient(circle at center, #ffffff 40%, #f4f9ff 100%);
         }
         .header-main-brand .logo-img {
@@ -98,7 +77,38 @@
             display: block;
         }
         @media (max-width: 600px) {
-            .header-main-brand .logo-img { max-width: 250px; }
+            .header-main-brand .logo-img { max-width: 210px; }
+        }
+
+        /* Enlaces sutiles y delicados a Mnews y Nuevo Cuyo+ bajo el logo */
+        .subtle-editions-bar {
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            letter-spacing: 0.3px;
+        }
+        .subtle-edition-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(232, 242, 254, 0.65);
+            border: 1px solid rgba(191, 219, 254, 0.7);
+            font-weight: 500;
+            transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+        }
+        .subtle-edition-link:hover {
+            color: var(--federal-blue);
+            background: var(--federal-sky);
+            border-color: var(--federal-border);
+        }
+        .subtle-edition-dot {
+            color: var(--federal-border);
+            font-size: 0.65rem;
+            user-select: none;
         }
 
         /* Menú de Categorías en Azul Federal Luminoso */
@@ -112,8 +122,9 @@
             padding: 0 16px;
             display: flex;
             align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 6px 14px;
+            gap: 6px 18px;
             font-size: 0.8rem;
             text-transform: uppercase;
             font-weight: 600;
@@ -133,20 +144,8 @@
             border-bottom: 3px solid var(--accent-gold);
             font-weight: 800;
         }
-        .nav-dolar-pill {
-            margin-left: auto;
-            background: rgba(255, 255, 255, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            color: #ffffff;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.74rem;
-            font-weight: 800;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
-        }
 
-        /* Franja Horizontal Compacta: 2 Radios + 2 Diarios */
+        /* Franja Horizontal Compacta: Radios en paralelo */
         .market-radio-ticker {
             background: var(--federal-sky);
             border-bottom: 1px solid var(--federal-border);
@@ -159,16 +158,10 @@
         }
         .radios-strip {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
             align-items: stretch;
             width: 100%;
-        }
-        @media (max-width: 1050px) {
-            .radios-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        @media (max-width: 580px) {
-            .radios-strip { grid-template-columns: 1fr; }
         }
 
         .media-hub-card {
@@ -234,50 +227,76 @@
             text-overflow: ellipsis;
             margin-top: 1px;
         }
-        .media-action-tag {
-            font-size: 0.68rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            color: var(--federal-blue);
-            margin-top: 3px;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .media-action-tag a {
-            color: var(--federal-blue);
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            transition: color 0.15s ease, transform 0.15s ease;
-        }
-        .media-action-tag a:hover {
-            color: var(--federal-light);
-            transform: translateY(-1px);
-        }
         .media-hub-card audio {
-            height: 24px;
-            width: 100px;
+            height: 26px;
+            width: 130px;
             min-width: 82px;
             flex-shrink: 0;
             accent-color: var(--federal-blue);
         }
-        .read-pill {
-            background: linear-gradient(90deg, var(--federal-blue) 0%, var(--federal-light) 100%);
-            color: #ffffff;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 5px 10px;
-            border-radius: 999px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            text-decoration: none;
+
+        /* Ajustes responsivos para celulares y pantallas angostas */
+        @media (max-width: 900px) {
+            header {
+                position: static;
+                box-shadow: 0 2px 8px rgba(29, 99, 184, 0.08);
+            }
+            .header-main-brand {
+                padding: 6px 12px 8px 12px;
+            }
+            .nav-container {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 12px;
+                padding: 0 12px;
+            }
+            .nav-container::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-container a {
+                flex-shrink: 0;
+                padding: 9px 2px;
+                font-size: 0.74rem;
+            }
         }
-        .read-pill.alt {
-            background: var(--federal-sky);
-            color: var(--federal-blue);
-            border: 1px solid var(--federal-light);
+
+        @media (max-width: 600px) {
+            .radios-strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 6px;
+            }
+            .media-hub-card {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 6px;
+                gap: 5px;
+                min-height: auto;
+            }
+            .media-logo {
+                width: 24px;
+                height: 24px;
+            }
+            .media-title {
+                font-size: 0.74rem;
+            }
+            .media-desc {
+                font-size: 0.62rem;
+            }
+            .media-hub-card audio {
+                width: 100%;
+                min-width: 0;
+                height: 26px;
+            }
+            .kick-live-module {
+                margin: 12px 0;
+                padding: 12px;
+            }
+            .main-headline-title {
+                font-size: 1.45rem;
+            }
         }
 
         .page-wrapper {
@@ -550,21 +569,6 @@
             margin-bottom: 10px;
         }
 
-        /* Franja Red Federal en Azul Federal Luminoso */
-        .federal-network-box {
-            background: linear-gradient(90deg, var(--federal-blue) 0%, var(--federal-light) 100%);
-            border-left: 5px solid var(--accent-gold);
-            border-radius: 10px;
-            padding: 20px;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            box-shadow: 0 6px 16px rgba(29, 99, 184, 0.16);
-        }
-
         /* Columna Lateral */
         .sidebar-right {
             display: flex;
@@ -665,45 +669,37 @@
 </head>
 <body>
 
-    <div class="sitec-top-header">
-        <div class="sitec-top-container">
-            <div><strong>Communications Global Media</strong> • Service Manager</div>
-            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-                <a href="index-nuevocuyo.html" class="sitec-top-link">Nuevo Cuyo+</a>
-                <a href="index_mnews.html" class="sitec-top-link">mnews</a>
-                <a href="mailto:contacto@mendozamultimedios.com.ar" class="sitec-top-link">Contacto</a>
-            </div>
-        </div>
-    </div>
+    <div class="federal-top-stripe"></div>
 
     <header>
         <div class="top-utility-bar">
             <div id="fecha-actual">Domingo, 22 de Noviembre de 2026</div>
-            <div>⛅ Mendoza: 24°C Despejado</div>
+            <div>⛅ Mendoza: 24°C</div>
         </div>
 
         <div class="header-main-brand">
             <a href="index.html" class="brand-logo">
                 <img src="mmm1.png" alt="Mendoza Multimedios" class="logo-img">
             </a>
+            <div class="subtle-editions-bar" aria-label="Ediciones locales">
+                <a href="index_mnews.html" class="subtle-edition-link">Mnews</a>
+                <span class="subtle-edition-dot">•</span>
+                <a href="index-nuevocuyo.html" class="subtle-edition-link">Nuevo Cuyo+</a>
+            </div>
         </div>
 
         <div class="nav-categories">
             <div class="nav-container">
-                <a href="index_mnews.html" class="active">MNEWS</a>
-                <a href="index-nuevocuyo.html">NUEVO CUYO+</a>
+                <a href="index.html">INICIO</a>
                 <a href="latinoamerica.html">LATAM</a>
                 <a href="eeuu.html">EEUU</a>
                 <a href="europa.html">EUROPA</a>
-                <a href="mediooriente.html">MEDIO ORIENTE</a>
-                <a href="asia.html">ASIA ORIENTAL Y CENTRAL</a>
-                <a href="https://www.facebook.com/canalzeromultimedia/">STREAMING</a>
-                <a href="#">YOUTUBE CHANNEL</a>
-                <span class="nav-dolar-pill" id="dolar-nav-badge">USD: Cargando...</span>
+                <a href="mediooriente.html">ORIENTE</a>
+                <a href="asia.html">ASIA</a>
             </div>
         </div>
 
-        <!-- 2 Radios + 2 Diarios con logo, reseña mínima, iconos de redes y acción -->
+        <!-- 2 Radios en paralelo compactas -->
         <div class="market-radio-ticker" id="radios-vivo">
             <div class="ticker-flex">
                 <div class="radios-strip">
@@ -717,20 +713,6 @@
                             <div class="media-info">
                                 <span class="media-title">Rock Station FM</span>
                                 <span class="media-desc" id="now-playing-rs" title="Clásicos y rock 24/7">Clásicos y rock 24/7</span>
-                                <span class="media-action-tag">
-                                    <a href="https://www.facebook.com/rockstationfmargentina" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path d="M15 3h4V7h-3c-.6 0-1 .4-1 1v3h4l-.5 4H15v7h-4v-7H8v-4h3V8a5 5 0 0 1 5-5z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                                            <rect x="3" y="3" width="18" height="18" rx="5"/>
-                                            <circle cx="12" cy="12" r="4"/>
-                                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                                        </svg>
-                                    </a>
-                                </span>
                             </div>
                         </div>
                         <audio controls preload="none">
@@ -747,81 +729,11 @@
                             <div class="media-info">
                                 <span class="media-title">R.P.L. Popular Latina</span>
                                 <span class="media-desc" id="now-playing-rpl" title="Música e info regional">Música e info regional</span>
-                                <span class="media-action-tag">
-                                    <a href="https://www.facebook.com/radiopopularlatina" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path d="M15 3h4V7h-3c-.6 0-1 .4-1 1v3h4l-.5 4H15v7h-4v-7H8v-4h3V8a5 5 0 0 1 5-5z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                                            <rect x="3" y="3" width="18" height="18" rx="5"/>
-                                            <circle cx="12" cy="12" r="4"/>
-                                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                                        </svg>
-                                    </a>
-                                </span>
                             </div>
                         </div>
                         <audio controls preload="none">
                             <source src="https://stream.zeno.fm/0yz5fs6u498uv" type="audio/mpeg">
                         </audio>
-                    </div>
-
-                    <!-- Diario 1: mnews -->
-                    <div class="media-hub-card">
-                        <div class="media-left">
-                            <a href="index_mnews.html" class="media-logo-link" title="mnews">
-                                <img src="mendonews.png" alt="mnews" class="media-logo">
-                            </a>
-                            <div class="media-info">
-                                <span class="media-title">mnews</span>
-                                <span class="media-desc">Noticias provinciales</span>
-                                <span class="media-action-tag">
-                                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path d="M15 3h4V7h-3c-.6 0-1 .4-1 1v3h4l-.5 4H15v7h-4v-7H8v-4h3V8a5 5 0 0 1 5-5z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                                            <rect x="3" y="3" width="18" height="18" rx="5"/>
-                                            <circle cx="12" cy="12" r="4"/>
-                                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                                        </svg>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                        <a href="index_mnews.html" class="read-pill">Leer diario &rarr;</a>
-                    </div>
-
-                    <!-- Diario 2: Nuevo Cuyo+ -->
-                    <div class="media-hub-card">
-                        <div class="media-left">
-                            <a href="index-nuevocuyo.html" class="media-logo-link" title="Nuevo Cuyo+">
-                                <img src="nuevocuyo+.png" alt="Nuevo Cuyo+" class="media-logo">
-                            </a>
-                            <div class="media-info">
-                                <span class="media-title">Nuevo Cuyo+</span>
-                                <span class="media-desc">Mendoza y Cuyo</span>
-                                <span class="media-action-tag">
-                                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path d="M15 3h4V7h-3c-.6 0-1 .4-1 1v3h4l-.5 4H15v7h-4v-7H8v-4h3V8a5 5 0 0 1 5-5z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                                            <rect x="3" y="3" width="18" height="18" rx="5"/>
-                                            <circle cx="12" cy="12" r="4"/>
-                                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                                        </svg>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                        <a href="index-nuevocuyo.html" class="read-pill alt">Leer diario &rarr;</a>
                     </div>
 
                 </div>
@@ -863,7 +775,7 @@
                         <ul class="schedule-items" id="programacion-dinamica">
                             <li class="active-slot">
                                 <span class="slot-hour">Canal Zero • Streaming Local</span>
-                                <span>Verificando señal en Kick y Facebook...</span>
+                                <span>Verificando señal en Kick, Facebook y YouTube...</span>
                             </li>
                             <li>
                                 <span class="slot-hour">R.P.L. Popular Latina • Al Aire</span>
@@ -989,7 +901,7 @@
     <div class="mmm-marquee-wrap">
         <div class="mmm-marquee-track">
             <!-- BLOQUE 1 COMPLETO -->
-           <a href="https://www.google.com/maps/@-32.9400722,-68.7821824,772a,75y,303.93h,90t/data=!3m7!1e1!3m5!1sUhvnQTqoZvOscu8F6T-HLQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DUhvnQTqoZvOscu8F6T-HLQ%26yaw%3D303.93332!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="mmm-marquee-card">
+           <a href="https://www.google.com/maps/search/?api=1&query=-32.9400722,-68.7821824" target="_blank" rel="noopener noreferrer" class="mmm-marquee-card">
                 <img src="distribuidoramaipu.jfif" alt="Distribuidora Maipú">
                 <div><strong style="font-size:0.8rem; color:var(--federal-blue); display:block;">Distribuidora Maipú</strong><span style="font-size:0.7rem; color:var(--text-sub);">Tienda de alimento para mascotas</span></div>
             </a>
@@ -1024,7 +936,7 @@
 
             <!-- DUPLICADO EXACTO PARA LOOP INFINITO SIN SALTOS -->
 
-         <a href="https://www.google.com/maps/@-32.9400722,-68.7821824,772a,75y,303.93h,90t/data=!3m7!1e1!3m5!1sUhvnQTqoZvOscu8F6T-HLQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DUhvnQTqoZvOscu8F6T-HLQ%26yaw%3D303.93332!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="mmm-marquee-card">
+            <a href="https://www.google.com/maps/search/?api=1&query=-32.9400722,-68.7821824" target="_blank" rel="noopener noreferrer" class="mmm-marquee-card">
                 <img src="distribuidoramaipu.jfif" alt="Distribuidora Maipú">
                 <div><strong style="font-size:0.8rem; color:var(--federal-blue); display:block;">Distribuidora Maipú</strong><span style="font-size:0.7rem; color:var(--text-sub);">Tienda de alimento para mascotas</span></div>
             </a>
@@ -1062,7 +974,6 @@
 
     <footer>
         <p>&copy; 2021 <strong>Mendoza Multimedios</strong> • Portal Autónomo de Noticias y Red de Emisoras de Argentina y el mundo. <strong>contacto@mendozamultimedios.com.ar</strong></p>
-        <p style="margin-top: 4px;">Soportado por Communications Global Media. Service Manager</p>
     </footer>
 
     <script>
@@ -1077,31 +988,16 @@
                 });
                 fechaEl.textContent = hoy.charAt(0).toUpperCase() + hoy.slice(1);
             }
-
-            const dolarBadge = document.getElementById('dolar-nav-badge');
-            if (dolarBadge) {
-                fetch('https://dolarapi.com/v1/dolares/oficial', { cache: 'no-store' })
-                    .then(r => r.json())
-                    .then(d => {
-                        if (d && (d.venta || d.compra)) {
-                            const v = d.venta ? `$${d.venta}` : '';
-                            const c = d.compra ? `$${d.compra}` : '';
-                            dolarBadge.textContent = `USD Oficial: ${c}${c && v ? ' / ' : ''}${v}`;
-                        }
-                    })
-                    .catch(() => {
-                        dolarBadge.textContent = 'USD';
-                    });
-            }
         })();
 
-        // Programación en Vivo: Canal Zero (Kick / Facebook) + RPL (rpl.html) + Rock Station (https://rockstation.com.ar/)
+        // Programación en Vivo: Canal Zero (Kick / Facebook / YouTube) + RPL (rpl.html) + Rock Station (https://rockstation.com.ar/)
         (function() {
             const listaEl = document.getElementById("programacion-dinamica");
             if (!listaEl) return;
 
             const CANAL_KICK = "mendozamultimedios";
             const URL_FB_CANAL_ZERO = "https://www.facebook.com/canalzeromultimedia";
+            const URL_YT_CANAL_ZERO = "#"; // Reemplazá "#" por el enlace de tu canal o transmisión de YouTube
             const URL_RPL = "rpl.html";
             const URL_RS = "https://rockstation.com.ar/";
 
@@ -1129,8 +1025,6 @@
                 }
             }
 
-            // Facebook bloquea fetch directo desde navegador por CORS; si ponés un archivo local/público o un estado, se puede detectar,
-            // de lo contrario ofrece acceso directo a Canal Zero en Facebook cuando Kick no transmite.
             async function consultarFacebookCanalZero() {
                 try {
                     const resp = await fetch(URL_FB_CANAL_ZERO, { cache: "no-store", mode: "cors" });
@@ -1140,7 +1034,6 @@
                         return { transmite };
                     }
                 } catch (e) {
-                    // CORS esperado en Facebook desde el navegador
                 }
                 return { transmite: null };
             }
@@ -1150,7 +1043,7 @@
                 if (cacheParrillas[hoyKey]) return cacheParrillas[hoyKey];
 
                 const ahora = new Date();
-                const diaJs = ahora.getDay(); // 0=Dom, 1=Lun ... 6=Sáb
+                const diaJs = ahora.getDay();
                 const indiceLunesADomingo = diaJs === 0 ? 6 : diaJs - 1;
 
                 try {
@@ -1196,25 +1089,25 @@
                     leerParrilla(URL_RS, "rs")
                 ]);
 
-                // 1) Streaming Local: Kick o Facebook Canal Zero
                 let etiquetaLocal = "Canal Zero • Streaming Local";
                 let textoLocal = "";
                 let localActivo = false;
 
+                const enlacesCanales = `<a href="${URL_FB_CANAL_ZERO}" target="_blank" rel="noopener noreferrer">Facebook</a> • <a href="${URL_YT_CANAL_ZERO}" target="_blank" rel="noopener noreferrer">YouTube</a>`;
+
                 if (estadoKick.enVivo) {
                     localActivo = true;
                     etiquetaLocal = "Kick • En Vivo en Canal Zero";
-                    textoLocal = estadoKick.titulo || "Transmisión en vivo por Kick";
+                    textoLocal = `${estadoKick.titulo || "Transmisión en vivo por Kick"} • ${enlacesCanales}`;
                 } else if (estadoFb.transmite === true) {
                     localActivo = true;
                     etiquetaLocal = "Facebook Canal Zero • En Vivo";
-                    textoLocal = `Transmisión en Facebook (<a href="${URL_FB_CANAL_ZERO}" target="_blank" rel="noopener noreferrer">Ver en Canal Zero</a>)`;
+                    textoLocal = `Transmisión en vivo • ${enlacesCanales}`;
                 } else {
-                    etiquetaLocal = "Canal Zero • Kick & Facebook";
-                    textoLocal = `Sin emisión en Kick ahora • <a href="${URL_FB_CANAL_ZERO}" target="_blank" rel="noopener noreferrer">Ver transmisión / canal en Facebook</a>`;
+                    etiquetaLocal = "Canal Zero • Kick, Facebook & YouTube";
+                    textoLocal = `Sin emisión en Kick ahora • Ver en ${enlacesCanales}`;
                 }
 
-                // 2) R.P.L. desde rpl.html
                 const segRpl = obtenerSegmentoEnVivo(franjasRpl, horaDecimal);
                 let horarioRpl = "R.P.L. Popular Latina • Al Aire";
                 let textoRpl = "Música e info regional";
@@ -1226,7 +1119,6 @@
                     textoRpl = "FM Pasión en directo";
                 }
 
-                // 3) Rock Station desde https://rockstation.com.ar/
                 const segRs = obtenerSegmentoEnVivo(franjasRs, horaDecimal);
                 const horarioRs = (segRs && segRs.hora)
                     ? `Rock Station FM • ${segRs.hora}`
@@ -1257,12 +1149,10 @@
 
         // Agendador + Marquesina Vertical de Placas PNG para Kick / OBS (10 min tolerancia)
         (function() {
-            const TOLERANCIA_MS = 1000; // 10 minutos sin transmisión antes de activar placas usar  10 * 60 * 100(usar 1000 para probar en 1s)
-            const CHEQUEO_MS = 60 * 1000;        // Consulta estado de Kick cada 1 minuto
+            const TOLERANCIA_MS = 1000;
+            const CHEQUEO_MS = 60 * 1000;
             const CANAL_KICK = "mendozamultimedios";
 
-            // Días: 0=Dom, 1=Lun, 2=Mar, 3=Mié, 4=Jue, 5=Vie, 6=Sáb
-            // horaInicio y horaFin en formato decimal 24h (ej: 23 = 23:00, 23.5 = 23:30)
             const AGENDA_PLACAS = [
                  {
                     archivo: "Placas/rockdemendozasabdos14hs.png",
@@ -1273,54 +1163,15 @@
                     siempre: false
                 },
 
-                {
-                    archivo: "Placas/miercolesdemisterioabelbasti23hs.png",
-                    alt: "Misterio de Noche - Miercoles 23 hs",
-                    dias: [3],
-                    horaInicio: 20,
-                    horaFin: 24.0,
-                    siempre: false
-                },
-                {
-                    archivo: "Placas/carolineradio.png",
-                    alt: "Bloque carolineradio",
-                    dias: [0, 1, 2, 3, 4, 5, 6],
-                    horaInicio: 11,
-                    horaFin: 24,
-                    siempre: false
-                },
                
                {
-                    archivo: "Placas/rockstationmovilbanner.png",
-                    alt: "Bloque Rock Station FM",
-                    dias: [0, 1, 2, 3, 4, 5, 6],
-                    horaInicio: 11,
-                    horaFin: 24,
-                    siempre: false
-                },
-               {
-                    archivo: "Placas/frecuenciagotica.png",
-                    alt: "Bloque Frecuencia Gótica",
+                    archivo: "zeropodcast.png",
+                    alt: "Canal Zero",
                     dias: [0, 1, 2, 3, 4, 5, 6],
                     horaInicio: 20,
                     horaFin: 24,
                     siempre: false
-                },
-                {
-                    archivo: "Placas/martesdemisterio23hs.png",
-                    alt: "Bloque Martes de Misterio",
-                    dias: [0, 1, 2, 3, 4, 5, 6],
-                    horaInicio: 20,
-                    horaFin: 24,
-                    siempre: false
-                },
-                {
-                    archivo: "Placas/rplbanner.png",
-                    alt: "Bloque R.P.L. Popular Latina",
-                    dias: [0, 1, 2, 3, 4, 5, 6],
-                    horaInicio: 0,
-                    horaFin: 24,
-                    siempre: true
+                
                 }
             ];
 
@@ -1421,7 +1272,6 @@
                         el.title = textoRespaldo;
                     }
                 } catch (e) {
-                    // Mantiene el texto anterior si llega un paquete vacío
                 }
             };
 
